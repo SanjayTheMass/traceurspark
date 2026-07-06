@@ -3,6 +3,7 @@ import {
   FaArrowRight,
   FaChevronLeft,
   FaChevronRight,
+  FaChevronUp,
   FaFacebookF,
   FaGift,
   FaHeadset,
@@ -229,6 +230,10 @@ function App() {
   const [visibleTeamCards, setVisibleTeamCards] = useState(getVisibleTeamCards);
   const [teamOffsetPx, setTeamOffsetPx] = useState(0);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [statsAnimationTick, setStatsAnimationTick] = useState(0);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const achievementsInViewRef = useRef(false);
+  const achievementsSectionRef = useRef(null);
   const heroTouchStartX = useRef(null);
   const teamTrackRef = useRef(null);
   const teamTouchStartX = useRef(null);
@@ -333,6 +338,10 @@ function App() {
     setActiveTestimonial(index);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const handleTestimonialTouchStart = (event) => {
     testimonialTouchStartX.current = event.changedTouches[0]?.clientX ?? null;
   };
@@ -399,6 +408,46 @@ function App() {
   }, [activeBanner, banners.length]);
 
   useEffect(() => {
+    const section = achievementsSectionRef.current;
+
+    if (!section) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !achievementsInViewRef.current) {
+          achievementsInViewRef.current = true;
+          setStatsAnimationTick((previous) => previous + 1);
+          return;
+        }
+
+        if (!entry.isIntersecting) {
+          achievementsInViewRef.current = false;
+        }
+      },
+      { threshold: 0.35 }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 420);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setAnimatedStats(stats.map(() => 0));
+
     const durationMs = 1700;
     const startTime = performance.now();
     let frameId = 0;
@@ -415,7 +464,7 @@ function App() {
     frameId = requestAnimationFrame(animateCounters);
 
     return () => cancelAnimationFrame(frameId);
-  }, []);
+  }, [statsAnimationTick]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -532,7 +581,7 @@ function App() {
           </div>
         </section>
 
-        <section className="section best-section" id="achievements">
+        <section ref={achievementsSectionRef} className="section best-section" id="achievements">
           <div className="container">
             <div className="section-head">
               <h2 className="achievements-main-title">Achievements</h2>
@@ -855,6 +904,12 @@ function App() {
           <p className="footer-rights">© 2026 Traceurs Park. All rights reserved.</p>
         </div>
       </footer>
+
+      {showScrollTop ? (
+        <button className="scroll-top-btn" type="button" aria-label="Scroll to top" onClick={scrollToTop}>
+          <FaChevronUp />
+        </button>
+      ) : null}
     </div>
   );
 }

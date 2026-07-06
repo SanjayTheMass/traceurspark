@@ -1120,6 +1120,28 @@ main {
   color: rgba(247, 247, 247, 0.86);
 }
 
+.scroll-top-btn {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(17, 17, 17, 0.18);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  color: #1a1a1a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 120;
+}
+
+.scroll-top-btn:hover {
+  transform: translateY(-2px);
+}
+
 @media (max-width: 1060px) {
   :root {
     --support-bar-h: 24px;
@@ -1171,6 +1193,13 @@ main {
   .footer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .scroll-top-btn {
+    width: 36px;
+    height: 36px;
+    right: 14px;
+    bottom: 14px;
+  }
 }
 
 @media (max-width: 740px) {
@@ -1184,20 +1213,32 @@ main {
     gap: 8px 14px;
   }
 
+  .topbar-inner {
+    align-items: stretch;
+  }
+
   .nav-links {
     width: auto;
     flex: 1;
     margin-left: 0;
     justify-content: flex-start;
+    align-items: center;
     flex-wrap: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
     font-size: 0.79rem;
     gap: 12px;
-    padding-bottom: 0;
+    min-height: 100%;
+    padding: 0 0 0 6px;
+    touch-action: pan-x;
+    cursor: grab;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+  }
+
+  .nav-links:active {
+    cursor: grabbing;
   }
 
   .nav-links::-webkit-scrollbar {
@@ -1227,8 +1268,8 @@ main {
 
   .hero-carousel {
     width: 100%;
-    height: clamp(330px, 58vh, 460px);
-    min-height: 330px;
+    height: clamp(220px, 42vh, 300px);
+    min-height: 220px;
     background: #000;
     touch-action: pan-y;
   }
@@ -1243,34 +1284,35 @@ main {
   }
 
   .hero-caption {
-    width: 90vw;
+    width: 92vw;
     left: 5vw;
     top: 50%;
     transform: translateY(-50%);
-    padding: 12px 12px 12px 14px;
+    padding: 8px 8px 8px 10px;
     background: linear-gradient(120deg, rgba(10, 10, 10, 0.46), rgba(10, 10, 10, 0.2));
-    border-radius: 12px;
+    border-radius: 10px;
   }
 
   .hero-caption h1 {
-    font-size: clamp(1.15rem, 6.2vw, 1.8rem);
-    line-height: 1.18;
+    font-size: clamp(0.72rem, 3.9vw, 1rem);
+    line-height: 1.12;
+    letter-spacing: 0.2px;
   }
 
   .hero-caption p {
-    margin-top: 9px;
-    font-size: clamp(0.72rem, 3.15vw, 0.88rem);
-    line-height: 1.5;
+    margin-top: 5px;
+    font-size: clamp(0.56rem, 2.45vw, 0.68rem);
+    line-height: 1.3;
   }
 
   .hero-actions-inline {
-    margin-top: 12px;
+    margin-top: 8px;
   }
 
   .hero-actions-inline .cta-btn,
   .hero-actions-inline .ghost-btn {
-    padding: 10px 14px;
-    font-size: 0.78rem;
+    padding: 7px 10px;
+    font-size: 0.62rem;
   }
 
   .testimonials-section {
@@ -1305,6 +1347,11 @@ main {
   .gallery-grid,
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
   }
 
   .stats-grid {
@@ -1386,7 +1433,38 @@ main {
   }
 
   .service-card img {
-    min-height: 320px;
+    min-height: 210px;
+    aspect-ratio: 3 / 4;
+  }
+
+  .why-grid {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(170px, 1fr);
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+  }
+
+  .why-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .contact-grid {
+    gap: 0;
+  }
+
+  .contact-card {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: 0;
+  }
+
+  .map-card {
+    margin-top: -1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
 
   .team-carousel {
@@ -1411,10 +1489,17 @@ main {
   }
 
   .service-name-chip {
-    left: 10px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    font-size: 0.66rem;
+    padding: 6px 6px;
+  }
+
+  .scroll-top-btn {
+    width: 30px;
+    height: 30px;
     right: 10px;
     bottom: 10px;
-    font-size: 0.84rem;
-    padding: 8px 10px;
   }
 }
