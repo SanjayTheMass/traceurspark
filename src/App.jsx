@@ -229,6 +229,7 @@ function App() {
   const [visibleTeamCards, setVisibleTeamCards] = useState(getVisibleTeamCards);
   const [teamOffsetPx, setTeamOffsetPx] = useState(0);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const heroTouchStartX = useRef(null);
   const teamTrackRef = useRef(null);
   const teamTouchStartX = useRef(null);
   const testimonialTouchStartX = useRef(null);
@@ -252,6 +253,35 @@ function App() {
     setActiveBanner((previousBannerIndex) =>
       (previousBannerIndex - 1 + banners.length) % banners.length
     );
+  };
+
+  const handleHeroTouchStart = (event) => {
+    heroTouchStartX.current = event.changedTouches[0]?.clientX ?? null;
+  };
+
+  const handleHeroTouchEnd = (event) => {
+    const startX = heroTouchStartX.current;
+    const endX = event.changedTouches[0]?.clientX;
+
+    if (startX === null || typeof endX !== "number") {
+      return;
+    }
+
+    const swipeDelta = startX - endX;
+    const swipeThreshold = 45;
+
+    if (Math.abs(swipeDelta) < swipeThreshold) {
+      heroTouchStartX.current = null;
+      return;
+    }
+
+    if (swipeDelta > 0) {
+      nextBanner();
+    } else {
+      previousBanner();
+    }
+
+    heroTouchStartX.current = null;
   };
 
   const nextTeamPage = () => {
@@ -431,7 +461,12 @@ function App() {
 
       <main>
         <section className="hero" id="home">
-          <div className="hero-carousel" aria-label="Auto scrolling banner with three images">
+          <div
+            className="hero-carousel"
+            aria-label="Auto scrolling banner with three images"
+            onTouchStart={handleHeroTouchStart}
+            onTouchEnd={handleHeroTouchEnd}
+          >
             <div
               className="hero-track"
               style={{ transform: `translateX(-${activeBanner * 100}%)` }}
