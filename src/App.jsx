@@ -831,6 +831,14 @@ function App() {
                   Subscribe by Email
                 </a>
               </div>
+              <div className="contact-mini-map" aria-label="Compact location map widget">
+                <iframe
+                  title="Traceurs Park compact location map"
+                  src={mapEmbed}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
             </article>
 
             <article className="map-card" aria-label="Location map">
