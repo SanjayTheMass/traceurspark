@@ -184,6 +184,22 @@ const BANNER_AUTO_SCROLL_MS = 5500;
 const TEAM_TILES_PER_SCROLL = 3;
 const TESTIMONIAL_AUTO_SCROLL_MS = 7000;
 
+const getVisibleTeamCards = () => {
+  if (typeof window === "undefined") {
+    return TEAM_TILES_PER_SCROLL;
+  }
+
+  if (window.innerWidth <= 740) {
+    return 1;
+  }
+
+  if (window.innerWidth <= 1060) {
+    return 2;
+  }
+
+  return TEAM_TILES_PER_SCROLL;
+};
+
 function App() {
   const banners = [
     {
@@ -210,12 +226,14 @@ function App() {
   const [activeBanner, setActiveBanner] = useState(0);
   const [animatedStats, setAnimatedStats] = useState(stats.map(() => 0));
   const [teamIndex, setTeamIndex] = useState(0);
+  const [visibleTeamCards, setVisibleTeamCards] = useState(getVisibleTeamCards);
   const [teamOffsetPx, setTeamOffsetPx] = useState(0);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const teamTrackRef = useRef(null);
+  const teamTouchStartX = useRef(null);
   const testimonialTouchStartX = useRef(null);
 
-  const maxTeamIndex = Math.max(0, trainers.length - TEAM_TILES_PER_SCROLL);
+  const maxTeamIndex = Math.max(0, trainers.length - visibleTeamCards);
   const statsDisplay = useMemo(
     () =>
       stats.map((stat, index) => {
@@ -242,6 +260,35 @@ function App() {
 
   const previousTeamPage = () => {
     setTeamIndex((previousIndex) => Math.max(previousIndex - 1, 0));
+  };
+
+  const handleTeamTouchStart = (event) => {
+    teamTouchStartX.current = event.changedTouches[0]?.clientX ?? null;
+  };
+
+  const handleTeamTouchEnd = (event) => {
+    const startX = teamTouchStartX.current;
+    const endX = event.changedTouches[0]?.clientX;
+
+    if (startX === null || typeof endX !== "number") {
+      return;
+    }
+
+    const swipeDelta = startX - endX;
+    const swipeThreshold = 45;
+
+    if (Math.abs(swipeDelta) < swipeThreshold) {
+      teamTouchStartX.current = null;
+      return;
+    }
+
+    if (swipeDelta > 0) {
+      nextTeamPage();
+    } else {
+      previousTeamPage();
+    }
+
+    teamTouchStartX.current = null;
   };
 
   const nextTestimonial = () => {
@@ -286,29 +333,32 @@ function App() {
   };
 
   useEffect(() => {
-    const updateTeamOffset = (targetIndex = teamIndex) => {
-      const track = teamTrackRef.current;
-
-      if (!track || track.children.length === 0) {
-        setTeamOffsetPx(0);
-        return;
-      }
-
-      const boundedIndex = Math.max(0, Math.min(targetIndex, track.children.length - 1));
-      const targetCard = track.children[boundedIndex];
-      setTeamOffsetPx(targetCard ? targetCard.offsetLeft : 0);
-    };
-
-    updateTeamOffset(teamIndex);
-
     const handleResize = () => {
-      updateTeamOffset(teamIndex);
+      setVisibleTeamCards(getVisibleTeamCards());
     };
 
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
-  }, [teamIndex]);
+  }, []);
+
+  useEffect(() => {
+    setTeamIndex((previousIndex) => Math.min(previousIndex, maxTeamIndex));
+  }, [maxTeamIndex]);
+
+  useEffect(() => {
+    const track = teamTrackRef.current;
+
+    if (!track || track.children.length === 0) {
+      setTeamOffsetPx(0);
+      return;
+    }
+
+    const boundedIndex = Math.max(0, Math.min(teamIndex, maxTeamIndex));
+    const targetCard = track.children[boundedIndex];
+    setTeamOffsetPx(targetCard ? targetCard.offsetLeft : 0);
+  }, [teamIndex, maxTeamIndex, visibleTeamCards]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -477,7 +527,11 @@ function App() {
               <h2 className="team-main-title">Our Team</h2>
               <p className="team-subtitle">Dedicated Trainers for Every Movement Style</p>
             </div>
-            <div className="team-carousel">
+            <div
+              className="team-carousel"
+              onTouchStart={handleTeamTouchStart}
+              onTouchEnd={handleTeamTouchEnd}
+            >
               <button
                 className="team-nav-btn left"
                 type="button"

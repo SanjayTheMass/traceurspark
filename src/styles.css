@@ -507,6 +507,7 @@ main {
 .team-carousel {
   position: relative;
   padding: 0 52px;
+  touch-action: pan-y;
 }
 
 .team-viewport {
@@ -522,7 +523,7 @@ main {
 }
 
 .trainer-card {
-  flex: 0 0 calc((100% - 68px) / 3);
+  flex: 0 0 calc((100% - 90px) / 3);
 }
 
 .team-nav-btn {
@@ -1184,9 +1185,40 @@ main {
   }
 
   .nav-links {
-    width: 100%;
-    font-size: 0.85rem;
-    gap: 10px;
+    width: auto;
+    flex: 1;
+    margin-left: 0;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    font-size: 0.79rem;
+    gap: 12px;
+    padding-bottom: 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-links a {
+    flex: 0 0 auto;
+  }
+
+  .brand {
+    gap: 6px;
+  }
+
+  .brand img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .brand span {
+    font-size: 1.12rem;
   }
 
   .hero {
@@ -1195,20 +1227,39 @@ main {
 
   .hero-carousel {
     width: 100%;
-    height: 105vh;
-    min-height: 240px;
+    height: clamp(430px, 74vh, 620px);
+    min-height: 430px;
   }
 
   .hero-caption {
-    width: 92vw;
-    left: 4vw;
-    top: 44%;
+    width: 90vw;
+    left: 5vw;
+    top: 50%;
     transform: translateY(-50%);
-    padding: 6px 0 6px 10px;
+    padding: 12px 12px 12px 14px;
+    background: linear-gradient(120deg, rgba(10, 10, 10, 0.46), rgba(10, 10, 10, 0.2));
+    border-radius: 12px;
+  }
+
+  .hero-caption h1 {
+    font-size: clamp(1.15rem, 6.2vw, 1.8rem);
+    line-height: 1.18;
   }
 
   .hero-caption p {
-    margin-top: 8px;
+    margin-top: 9px;
+    font-size: clamp(0.72rem, 3.15vw, 0.88rem);
+    line-height: 1.5;
+  }
+
+  .hero-actions-inline {
+    margin-top: 12px;
+  }
+
+  .hero-actions-inline .cta-btn,
+  .hero-actions-inline .ghost-btn {
+    padding: 10px 14px;
+    font-size: 0.78rem;
   }
 
   .testimonials-section {
