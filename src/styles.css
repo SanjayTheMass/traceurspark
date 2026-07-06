@@ -1490,9 +1490,9 @@ main {
 
   .contact-actions {
     display: grid;
-    grid-template-columns: 92px 92px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: stretch;
-    justify-content: start;
+    justify-content: stretch;
     gap: 10px;
   }
 
@@ -1504,7 +1504,7 @@ main {
 
   .contact-actions-stack .cta-btn,
   .contact-actions-stack .ghost-btn {
-    width: 92px;
+    width: 100%;
     min-height: 40px;
     padding: 6px 8px;
     font-size: 0.66rem;
