@@ -824,20 +824,22 @@ function App() {
                 </li>
               </ul>
               <div className="contact-actions">
-                <a className="cta-btn" href="https://maps.app.goo.gl/AgeMqVWusJUQKwkt8" target="_blank" rel="noreferrer">
-                  Open Map Location
-                </a>
-                <a className="ghost-btn" href={subscribeMailto}>
-                  Subscribe by Email
-                </a>
-              </div>
-              <div className="contact-mini-map" aria-label="Compact location map widget">
-                <iframe
-                  title="Traceurs Park compact location map"
-                  src={mapEmbed}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
+                <div className="contact-actions-stack">
+                  <a className="cta-btn" href="https://maps.app.goo.gl/AgeMqVWusJUQKwkt8" target="_blank" rel="noreferrer">
+                    Open Map Location
+                  </a>
+                  <a className="ghost-btn" href={subscribeMailto}>
+                    Subscribe by Email
+                  </a>
+                </div>
+                <div className="contact-mini-map" aria-label="Compact location map widget">
+                  <iframe
+                    title="Traceurs Park compact location map"
+                    src={mapEmbed}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
               </div>
             </article>
 
