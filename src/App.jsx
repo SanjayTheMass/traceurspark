@@ -234,6 +234,7 @@ function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const achievementsInViewRef = useRef(false);
   const achievementsSectionRef = useRef(null);
+  const navLinksRef = useRef(null);
   const heroTouchStartX = useRef(null);
   const teamTrackRef = useRef(null);
   const teamTouchStartX = useRef(null);
@@ -400,6 +401,32 @@ function App() {
   }, [teamIndex, maxTeamIndex, visibleTeamCards]);
 
   useEffect(() => {
+    const nav = navLinksRef.current;
+
+    if (!nav) {
+      return;
+    }
+
+    if (window.innerWidth > 740 || nav.scrollWidth <= nav.clientWidth) {
+      return;
+    }
+
+    const intervalId = window.setInterval(() => {
+      const maxScrollLeft = nav.scrollWidth - nav.clientWidth;
+      const nextLeft = nav.scrollLeft + nav.clientWidth;
+
+      if (nextLeft >= maxScrollLeft - 2) {
+        nav.scrollTo({ left: 0, behavior: "smooth" });
+        return;
+      }
+
+      nav.scrollTo({ left: nextLeft, behavior: "smooth" });
+    }, 5000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       nextBanner();
     }, BANNER_AUTO_SCROLL_MS);
@@ -493,7 +520,7 @@ function App() {
               <img src={logo} alt="Traceurs Park logo" />
               <span>Traceurs Park</span>
             </a>
-            <nav className="nav-links" aria-label="Main navigation">
+            <nav ref={navLinksRef} className="nav-links" aria-label="Main navigation">
               <a href="#home">Home</a>
               <a href="/about-us">About Us</a>
               <a href="#services">Our Services</a>
