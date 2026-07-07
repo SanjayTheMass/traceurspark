@@ -1459,7 +1459,7 @@ main {
 
   .service-card {
     min-height: unset;
-    aspect-ratio: 5 / 4;
+    aspect-ratio: 5 / 6;
   }
 
   .service-card img {
