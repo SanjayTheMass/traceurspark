@@ -1120,6 +1120,29 @@ main {
   justify-content: flex-start;
 }
 
+.contact-actions-stack {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.contact-actions-stack .contact-map-btn {
+  background: #2f7d32;
+  color: #fff;
+  border-color: #2f7d32;
+}
+
+.contact-actions-stack .contact-subscribe-btn {
+  background: #1565c0;
+  color: #fff;
+  border-color: #1565c0;
+}
+
+.contact-actions-stack .contact-map-btn:hover,
+.contact-actions-stack .contact-subscribe-btn:hover {
+  transform: translateY(-1px);
+}
+
 .contact-mini-map {
   margin-top: 10px;
   display: none;
@@ -1611,7 +1634,7 @@ main {
 
   .contact-actions-stack {
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
     gap: 10px;
   }
 

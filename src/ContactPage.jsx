@@ -1,3 +1,5 @@
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter, FaYoutube } from "react-icons/fa";
+
 export default function ContactPage() {
   return (
     <section className="section" style={{ marginBottom: "60px" }}>
@@ -63,14 +65,23 @@ export default function ContactPage() {
 
             <div className="contact-info" style={{ padding: "30px", background: "#f5f5f5", borderRadius: "10px" }}>
               <h3 style={{ color: "var(--primary)", marginBottom: "15px" }}>🌐 Social Media</h3>
-              <p>
-                <a href="https://www.instagram.com/traceurspark" target="_blank" rel="noreferrer" style={{ color: "var(--accent)", fontWeight: "bold", textDecoration: "none", marginRight: "15px" }}>
-                  Instagram
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
+                <a href="https://www.instagram.com/traceurspark" target="_blank" rel="noreferrer" aria-label="Instagram" style={{ width: "40px", height: "40px", borderRadius: "50%", display: "inline-flex", alignItems: "center", justifyContent: "center", background: "#111", color: "#fff", textDecoration: "none" }}>
+                  <FaInstagram />
                 </a>
-                <a href="https://www.facebook.com/traceurspark" target="_blank" rel="noreferrer" style={{ color: "var(--accent)", fontWeight: "bold", textDecoration: "none" }}>
-                  Facebook
+                <a href="https://www.facebook.com/share/1FpxTeUvQu/" target="_blank" rel="noreferrer" aria-label="Facebook" style={{ width: "40px", height: "40px", borderRadius: "50%", display: "inline-flex", alignItems: "center", justifyContent: "center", background: "#111", color: "#fff", textDecoration: "none" }}>
+                  <FaFacebookF />
                 </a>
-              </p>
+                <a href="https://x.com/Traceurspark" target="_blank" rel="noreferrer" aria-label="X (Twitter)" style={{ width: "40px", height: "40px", borderRadius: "50%", display: "inline-flex", alignItems: "center", justifyContent: "center", background: "#111", color: "#fff", textDecoration: "none" }}>
+                  <FaTwitter />
+                </a>
+                <a href="https://www.linkedin.com/in/traceurs-park" target="_blank" rel="noreferrer" aria-label="LinkedIn" style={{ width: "40px", height: "40px", borderRadius: "50%", display: "inline-flex", alignItems: "center", justifyContent: "center", background: "#111", color: "#fff", textDecoration: "none" }}>
+                  <FaLinkedinIn />
+                </a>
+                <a href="https://www.youtube.com/@traceurspark" target="_blank" rel="noreferrer" aria-label="YouTube" style={{ width: "40px", height: "40px", borderRadius: "50%", display: "inline-flex", alignItems: "center", justifyContent: "center", background: "#111", color: "#fff", textDecoration: "none" }}>
+                  <FaYoutube />
+                </a>
+              </div>
             </div>
           </div>
 

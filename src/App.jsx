@@ -74,11 +74,11 @@ const services = [
 
 const trainers = [
   { name: "Mohamed Imran Shajahan", focus: "Creative Director", intro: "Chief Trainer: Advanced Parkour Training and Coaching", instagram: "https://www.instagram.com/imran_parkour" ,image: trainerChief },
-  { name: "Tharani Murali", focus: "Women Trainer", intro: "Strength and Inclusive Movement exclusive for women", instagram: "", image: trainerWomen },
-  { name: "Vignesh", focus: "Body Building Trainer", intro: "Power, Endurance and Conditioning focused body building training forged for individuals based on their needs", instagram: "", image: trainerBody },
-  { name: "Karnesh", focus: "Animal Flow Trainer", intro: "Mobility, Ground Flow and Agility. Master natural movement through animal-inspired body flow training", instagram: "", image: trainerAnimalFlow },
-  { name: "M.A. Gokul", focus: "Freestyle Nunchucks Trainer", intro: "Unlock the art of nunchucks with skill, discipline, and flow. Train smarter. Strike faster. Move sharper", instagram: "", image: trainerNunchucks },
-  { name: "Mohammed Suhail", focus: "Calisthenics Trainer", intro: "Your body is the gym. Let's make it unstoppable. Progressive bodyweight training for real-world strength", instagram: "", image: null }
+  { name: "Tharani Murali", focus: "Women Trainer", intro: "Strength and Inclusive Movement exclusive for women", instagram: "https://www.instagram.com/thara_sdiaryy", image: trainerWomen },
+  { name: "Vignesh", focus: "Body Building Trainer", intro: "Power, Endurance and Conditioning focused body building training forged for individuals based on their needs", instagram: "https://www.instagram.com/_theprabhu__", image: trainerBody },
+  { name: "Karnesh", focus: "Animal Flow Trainer", intro: "Mobility, Ground Flow and Agility. Master natural movement through animal-inspired body flow training", instagram: "https://www.instagram.com/tn_45_mt_rider_", image: trainerAnimalFlow },
+  { name: "M.A. Gokul", focus: "Freestyle Nunchucks Trainer", intro: "Unlock the art of nunchucks with skill, discipline, and flow. Train smarter. Strike faster. Move sharper", instagram: "https://www.instagram.com/arul_venkatesh", image: trainerNunchucks },
+  { name: "Mohammed Suhail", focus: "Calisthenics Trainer", intro: "Your body is the gym. Let's make it unstoppable. Progressive bodyweight training for real-world strength", instagram: "https://www.instagram.com/iam_suhail__", image: null }
 ];
 
 const stats = [
@@ -213,7 +213,7 @@ function App() {
     {
       image: banner1,
       alt: "Main banner image",
-      title: "Best Spot for Parkour Practice !",
+      title: "Traceurs Park: Best Spot for Parkour Practice !",
       subtitle:
         "First time ever in Trichy a movement academy"
     },
@@ -538,13 +538,13 @@ function App() {
             </a>
             <nav ref={navLinksRef} className="nav-links" aria-label="Main navigation">
               <a href="#home" onClick={(e) => { e.preventDefault(); setCurrentPage("home"); }}>Home</a>
-              <a href="#about" onClick={(e) => { e.preventDefault(); setCurrentPage("about"); }}>About Us</a>
               <a href="#services" onClick={(e) => { e.preventDefault(); setCurrentPage("home"); setTimeout(() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" }), 0); }}>Our Services</a>
-              <a href="#achievements" onClick={(e) => { e.preventDefault(); setCurrentPage("achievements"); }}>Achievements</a>
+              <a href="#about" onClick={(e) => { e.preventDefault(); setCurrentPage("about"); }}>About Us</a>
+              <a href="#other-services" onClick={(e) => { e.preventDefault(); setCurrentPage("other-services"); }}>Our Works</a>
               <a href="#gallery" onClick={(e) => { e.preventDefault(); setCurrentPage("gallery"); }}>Gallery</a>
               <a href="#blog" onClick={(e) => { e.preventDefault(); setCurrentPage("blog"); }}>Blog</a>
               <a href="#career" onClick={(e) => { e.preventDefault(); setCurrentPage("career"); }}>Career</a>
-              <a href="#other-services" onClick={(e) => { e.preventDefault(); setCurrentPage("other-services"); }}>Other Services</a>
+              <a href="#achievements" onClick={(e) => { e.preventDefault(); setCurrentPage("achievements"); }}>Achievements</a>
               <a href="#contact-page" onClick={(e) => { e.preventDefault(); setCurrentPage("contact"); }}>Contact</a>
             </nav>
           </div>
@@ -624,7 +624,7 @@ function App() {
           <div className="container">
             <div className="section-head">
               <h2 className="services-main-title">Our Services</h2>
-              <p className="services-subtitle">Movement Programs Built for Real-World Strength</p>
+              <p className="services-subtitle">Where Fitness meets fun and goals embark - that's the spirit of Traceurs Park!</p>
             </div>
             <div className="services-grid">
               {services.map((service) => (
@@ -714,7 +714,7 @@ function App() {
                           <div className="trainer-placeholder-img" aria-label={trainer.name} />
                         )}
                         <div className="trainer-overlay-links" aria-label={`${trainer.name} social links`}>
-                          <a href={trainer.instagram || "#"} aria-label={`${trainer.name} Instagram placeholder`}>
+                          <a href={trainer.instagram || "#"} target="_blank" rel="noreferrer" aria-label={`${trainer.name} Instagram placeholder`}>
                             <FaInstagram />
                           </a>
                         </div>
@@ -756,7 +756,7 @@ function App() {
             <div className="section-head">
               <h2 className="why-main-title">Why to Choose</h2>
               <p className="why-subtitle">Safe, Friendly and Athlete-Focused Environment</p>
-              <p className="why-intro">Trichy parkour is the best movement training since 2012</p>
+              <p className="why-intro">Traceurs Park is the best movement training since 2012</p>
             </div>
             <div className="why-grid">
               {chooseReasons.map((reason) => (
@@ -905,10 +905,10 @@ function App() {
                   >
                     Contact or Register
                   </a>
-                  <a className="ghost-btn" href="https://maps.app.goo.gl/AgeMqVWusJUQKwkt8" target="_blank" rel="noreferrer">
+                  <a className="ghost-btn contact-map-btn" href="https://maps.app.goo.gl/AgeMqVWusJUQKwkt8" target="_blank" rel="noreferrer">
                     Open Map Location
                   </a>
-                  <a className="ghost-btn" href={subscribeMailto}>
+                  <a className="ghost-btn contact-subscribe-btn" href={subscribeMailto}>
                     Subscribe by Email
                   </a>
                 </div>
@@ -984,16 +984,16 @@ function App() {
               Subscribe Now
             </a>
             <div className="footer-socials">
-              <a href="#" aria-label="Facebook placeholder">
+              <a href="https://www.facebook.com/share/1FpxTeUvQu/" target="_blank" rel="noreferrer" aria-label="Facebook placeholder">
                 <FaFacebookF />
               </a>
-              <a href="#" aria-label="Twitter placeholder">
+              <a href="https://x.com/Traceurspark" target="_blank" rel="noreferrer" aria-label="Twitter placeholder">
                 <FaTwitter />
               </a>
               <a href="https://www.instagram.com/traceurspark" target="_blank" rel="noreferrer" aria-label="Instagram">
                 <FaInstagram />
               </a>
-              <a href="#" aria-label="LinkedIn placeholder">
+              <a href="https://www.linkedin.com/in/traceurs-park" target="_blank" rel="noreferrer" aria-label="LinkedIn placeholder">
                 <FaLinkedinIn />
               </a>
             </div>
@@ -1001,7 +1001,7 @@ function App() {
         </div>
         <div className="container">
           <p className="footer-rights">© 2026 Traceurs Park. All rights reserved.</p>
-          <p className="footer-built-by">Built with ❤️ in India by <a href="https://wittercients.com" target="_blank" rel="noreferrer">Wittercients Academy</a></p>
+          <p className="footer-built-by">Built with ❤️ in India by <a href="https://witercients.com" target="_blank" rel="noreferrer">Witercients Academy</a></p>
         </div>
       </footer>
 

@@ -1,42 +1,81 @@
+// Import images from our-works folder
+import corpWellness from "../imgs/our-works/corporate.jpeg";
+import workshops from "../imgs/our-works/workshops.jpeg";
+import summerCamps from "../imgs/our-works/summer-camps.jpeg";
+import stunts from "../imgs/our-works/stunt.jpeg";
+import publicSpeaking from "../imgs/our-works/public-speaking.jpeg";
+import calligraphy from "../imgs/our-works/calligraphy.jpeg";
+import outdoorActivities from "../imgs/our-works/outdoor.jpeg";
+import monthlyActivities from "../imgs/our-works/monthly.jpeg";
+import celebrationEvents from "../imgs/our-works/celebration.jpeg";
+
+const services = [
+  {
+    title: "Corporate Wellness Programs",
+    description: "Bring movement and fitness to your workplace. Custom team building and wellness programs designed to improve employee health and morale.",
+    image: corpWellness
+  },
+  {
+    title: "Workshops",
+    description: "Interactive movement sessions for schools and colleges. Build confidence, strength, and coordination in students of all ages.",
+    image: workshops
+  },
+  {
+    title: "Summer Camps",
+    description: "Engaging summer programs designed for children and teens. Learn parkour, calisthenics, and movement skills in a fun, safe environment.",
+    image: summerCamps
+  },
+  {
+    title: "Stunt Coordination & Choreography",
+    description: "Professional movement design and coordination for film, TV, and stage productions.",
+    image: stunts
+  },
+  {
+    title: "Public Speaking",
+    description: "Develop confidence and communication skills through movement-based workshops. Overcome stage fright and present with poise.",
+    image: publicSpeaking
+  },
+  {
+    title: "Calligraphy",
+    description: "Learn the art of beautiful handwriting and letter formation. Combine movement precision with artistic expression.",
+    image: calligraphy
+  },
+  {
+    title: "Outdoor Activities",
+    description: "Adventure-packed outdoor movement sessions. Experience parkour, free running, and exploration in natural environments.",
+    image: outdoorActivities
+  },
+  {
+    title: "Monthly Activities",
+    description: "Regular themed movement challenges and training sessions. Build community and track your progress throughout the month.",
+    image: monthlyActivities
+  },
+  {
+    title: "Celebration Events",
+    description: "Special events and celebrations featuring performances, competitions, and community gatherings. Join the movement revolution!",
+    image: celebrationEvents
+  }
+];
+
 export default function OtherServices() {
   return (
     <section className="section">
       <div className="container">
-          <h1 style={{ textAlign: "center", marginBottom: "40px" }}>Other Services</h1>
+          <h1 style={{ textAlign: "center", marginBottom: "40px" }}>Our Works</h1>
           <p style={{ textAlign: "center", fontSize: "1.1rem", marginBottom: "60px" }}>
             Beyond our core training programs, we offer specialized services tailored to meet diverse needs.
           </p>
           
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "30px" }}>
-            <div className="service-card" style={{ padding: "30px", background: "#f5f5f5", borderRadius: "10px" }}>
-              <h3 style={{ color: "var(--primary)", marginBottom: "15px" }}>Corporate Wellness Programs</h3>
-              <p>Bring movement and fitness to your workplace. Custom team building and wellness programs designed to improve employee health and morale.</p>
-            </div>
-
-            <div className="service-card" style={{ padding: "30px", background: "#f5f5f5", borderRadius: "10px" }}>
-              <h3 style={{ color: "var(--primary)", marginBottom: "15px" }}>School Workshops</h3>
-              <p>Interactive movement sessions for schools and colleges. Build confidence, strength, and coordination in students of all ages.</p>
-            </div>
-
-            <div className="service-card" style={{ padding: "30px", background: "#f5f5f5", borderRadius: "10px" }}>
-              <h3 style={{ color: "var(--primary)", marginBottom: "15px" }}>Private Coaching</h3>
-              <p>One-on-one personalized training sessions tailored to your specific goals and fitness level.</p>
-            </div>
-
-            <div className="service-card" style={{ padding: "30px", background: "#f5f5f5", borderRadius: "10px" }}>
-              <h3 style={{ color: "var(--primary)", marginBottom: "15px" }}>Stunt Coordination & Choreography</h3>
-              <p>Professional movement design and coordination for film, TV, and stage productions.</p>
-            </div>
-
-            <div className="service-card" style={{ padding: "30px", background: "#f5f5f5", borderRadius: "10px" }}>
-              <h3 style={{ color: "var(--primary)", marginBottom: "15px" }}>Event Activities</h3>
-              <p>Exciting movement activities and demonstrations for events, festivals, and community gatherings.</p>
-            </div>
-
-            <div className="service-card" style={{ padding: "30px", background: "#f5f5f5", borderRadius: "10px" }}>
-              <h3 style={{ color: "var(--primary)", marginBottom: "15px" }}>Rehabilitation & Recovery</h3>
-              <p>Specialized movement programs to support recovery and rehabilitation with expert guidance.</p>
-            </div>
+            {services.map((service, index) => (
+              <div key={index} style={{ overflow: "hidden", borderRadius: "10px", boxShadow: "0 4px 12px rgba(0,0,0,0.08)" }}>
+                <img src={service.image} alt={service.title} style={{ width: "100%", height: "200px", objectFit: "cover", display: "block" }} />
+                <div style={{ padding: "30px", background: "#f5f5f5" }}>
+                  <h3 style={{ color: "var(--primary)", marginBottom: "15px", marginTop: "0" }}>{service.title}</h3>
+                  <p style={{ margin: "0", color: "#333", lineHeight: "1.6" }}>{service.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
 
           <div style={{ marginTop: "60px", textAlign: "center", padding: "40px", background: "#f5f5f5", borderRadius: "10px" }}>

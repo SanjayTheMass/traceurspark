@@ -9,12 +9,12 @@ import trainerAnimalFlow from "../imgs/trainers/Animal Flow Trainer.jpeg";
 import trainerNunchucks from "../imgs/trainers/Nunchucks-trainer.jpeg";
 
 const trainers = [
-  { name: "Chief Trainer", focus: "Advanced Parkour and Coaching", image: trainerChief },
-  { name: "Women Trainer", focus: "Strength and Inclusive Movement", image: trainerWomen },
-  { name: "Body Building Trainer", focus: "Power, Endurance and Conditioning", image: trainerBody },
-  { name: "Animal Flow Trainer", focus: "Mobility, Ground Flow and Agility", image: trainerAnimalFlow },
-  { name: "Nunchucks Trainer", focus: "Freestyle Nunchukus Fundamentals", image: trainerNunchucks },
-  { name: "Calisthenics Trainer", focus: "Breath, Balance and Flexibility", image: null }
+  { name: "Mohamed Imran Shajahan", focus: "Creative Director", intro: "Chief Trainer: Advanced Parkour Training and Coaching", instagram: "https://www.instagram.com/imran_parkour" ,image: trainerChief },
+  { name: "Tharani Murali", focus: "Women Trainer", intro: "Strength and Inclusive Movement exclusive for women", instagram: "https://www.instagram.com/thara_sdiaryy", image: trainerWomen },
+  { name: "Vignesh", focus: "Body Building Trainer", intro: "Power, Endurance and Conditioning focused body building training forged for individuals based on their needs", instagram: "https://www.instagram.com/_theprabhu__", image: trainerBody },
+  { name: "Karnesh", focus: "Animal Flow Trainer", intro: "Mobility, Ground Flow and Agility. Master natural movement through animal-inspired body flow training", instagram: "https://www.instagram.com/tn_45_mt_rider_", image: trainerAnimalFlow },
+  { name: "M.A. Gokul", focus: "Freestyle Nunchucks Trainer", intro: "Unlock the art of nunchucks with skill, discipline, and flow. Train smarter. Strike faster. Move sharper", instagram: "https://www.instagram.com/arul_venkatesh", image: trainerNunchucks },
+  { name: "Mohammed Suhail", focus: "Calisthenics Trainer", intro: "Your body is the gym. Let's make it unstoppable. Progressive bodyweight training for real-world strength", instagram: "https://www.instagram.com/iam_suhail__", image: null }
 ];
 
 const TEAM_TILES_PER_SCROLL = 3;
@@ -242,7 +242,7 @@ export default function About() {
                       <div className="trainer-placeholder-img" aria-label={trainer.name} />
                     )}
                     <div className="trainer-overlay-links" aria-label={`${trainer.name} social links`}>
-                      <a href="#" aria-label={`${trainer.name} Instagram placeholder`}>
+                      <a href="#" target="_blank" rel="noreferrer" aria-label={`${trainer.name} Instagram placeholder`}>
                         <FaInstagram />
                       </a>
                     </div>
@@ -250,6 +250,7 @@ export default function About() {
                   <div className="trainer-body">
                     <h3>{trainer.name}</h3>
                     <p><b>{trainer.focus}</b></p>
+                    <p>{trainer.intro}</p>
                   </div>
                 </article>
               ))}
