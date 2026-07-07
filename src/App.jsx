@@ -206,21 +206,21 @@ function App() {
     {
       image: banner1,
       alt: "Main banner image",
-      title: "NO LIES: TRAIN, EAT, STRENGTHEN - DAILY",
+      title: "Best Spot for Parkour Practice !",
       subtitle:
-        "No fake promises! Not instant, but inevitable: move, train and strength will follow"
+        "First time ever in Trichy a movement academy"
     },
     {
       image: banner2,
       alt: "Summer camp banner image",
-      title: "SUMMER CAMP PLACEHOLDER TITLE",
-      subtitle: "Placeholder subtitle for summer camp banner content"
+      title: "Leap Here, Lift Strong: Prime Movements Hub",
+      subtitle: "You won't change in one jump, but with every leap you'll feel getting stronger"
     },
     {
       image: banner3,
       alt: "Action banner image",
-      title: "ACTION BANNER PLACEHOLDER TITLE",
-      subtitle: "Placeholder subtitle for action banner content"
+      title: "NO LIES: TRAIN, EAT, STRENGTHEN - DAILY",
+      subtitle: "No fake promises! Not instant, but inevitable: move, train and strength will follow"
     }
   ];
 
@@ -556,7 +556,12 @@ function App() {
                     <h1>{banner.title}</h1>
                     <p>{banner.subtitle}</p>
                     <div className="hero-actions hero-actions-inline">
-                      <a className="cta-btn" href="#contact">
+                      <a
+                        className="cta-btn"
+                        href="https://wa.me/919363503310?text=More%20Information%20about%20Traceurs%20Park"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         Contact or Register
                       </a>
                       <a
@@ -856,7 +861,15 @@ function App() {
               </ul>
               <div className="contact-actions">
                 <div className="contact-actions-stack">
-                  <a className="cta-btn" href="https://maps.app.goo.gl/AgeMqVWusJUQKwkt8" target="_blank" rel="noreferrer">
+                  <a
+                    className="cta-btn"
+                    href="https://wa.me/919363503310?text=More%20Information%20about%20Traceurs%20Park"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Contact or Register
+                  </a>
+                  <a className="ghost-btn" href="https://maps.app.goo.gl/AgeMqVWusJUQKwkt8" target="_blank" rel="noreferrer">
                     Open Map Location
                   </a>
                   <a className="ghost-btn" href={subscribeMailto}>
