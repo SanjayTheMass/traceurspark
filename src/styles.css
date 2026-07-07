@@ -1213,6 +1213,24 @@ main {
   color: rgba(247, 247, 247, 0.86);
 }
 
+.footer-built-by {
+  margin: 6px 0 16px;
+  text-align: center;
+  font-size: 0.72rem;
+  color: rgba(247, 247, 247, 0.5);
+}
+
+.footer-built-by a {
+  color: rgba(247, 247, 247, 0.75);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(247, 247, 247, 0.25);
+  transition: color 0.2s ease;
+}
+
+.footer-built-by a:hover {
+  color: #fff;
+}
+
 .scroll-top-btn {
   position: fixed;
   right: 18px;
@@ -1377,13 +1395,14 @@ main {
   }
 
   .hero-caption {
-    width: 92vw;
-    left: 5vw;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 8px 8px 8px 10px;
-    background: linear-gradient(120deg, rgba(10, 10, 10, 0.46), rgba(10, 10, 10, 0.2));
-    border-radius: 10px;
+    width: 100%;
+    left: 0;
+    top: auto;
+    bottom: 0;
+    transform: none;
+    padding: 12px 14px 14px;
+    background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.3) 70%, transparent 100%);
+    border-radius: 0;
   }
 
   .hero-caption h1 {
@@ -1440,7 +1459,7 @@ main {
 
   .service-card {
     min-height: unset;
-    aspect-ratio: 5 / 2;
+    aspect-ratio: 5 / 4;
   }
 
   .service-card img {

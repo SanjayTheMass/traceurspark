@@ -1001,6 +1001,7 @@ function App() {
         </div>
         <div className="container">
           <p className="footer-rights">© 2026 Traceurs Park. All rights reserved.</p>
+          <p className="footer-built-by">Built with ❤️ in India by <a href="https://wittercients.com" target="_blank" rel="noreferrer">Wittercients Academy</a></p>
         </div>
       </footer>
 
