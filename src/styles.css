@@ -1525,9 +1525,28 @@ main {
     padding: 54px 0;
   }
 
+  .service-card {
+    min-height: unset;
+  }
+
   .service-card img {
-    min-height: 210px;
-    aspect-ratio: 3 / 4;
+    min-height: unset;
+    aspect-ratio: 1 / 1;
+    height: calc((100vw - 48px) / 3);
+  }
+
+  .service-card-back {
+    padding: 10px 8px;
+    gap: 6px;
+  }
+
+  .service-card-back h3 {
+    font-size: 0.85rem;
+  }
+
+  .service-card-back p {
+    font-size: 0.7rem;
+    line-height: 1.4;
   }
 
   .why-grid {
@@ -2080,23 +2099,55 @@ main {
   }
 
   .philosophy-pillars {
-    grid-template-columns: 1fr;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(70vw, 70vw);
+    overflow-x: auto;
+    overflow-y: hidden;
     gap: 16px;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .philosophy-pillars::-webkit-scrollbar {
+    display: none;
   }
 
   .pillar {
     padding: 20px 16px;
+    scroll-snap-align: start;
   }
 
   .pillar h4 {
     font-size: 1rem;
   }
 
+  .about-journey-list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(75vw, 75vw);
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 12px;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .about-journey-list::-webkit-scrollbar {
+    display: none;
+  }
+
   .about-journey-list li {
-    padding: 16px 20px;
-    gap: 14px;
-    margin-bottom: 12px;
-    font-size: 0.9rem;
+    padding: 16px 16px;
+    gap: 12px;
+    margin-bottom: 0;
+    font-size: 0.85rem;
+    scroll-snap-align: start;
+    border-radius: 12px;
   }
 
   .about-section {

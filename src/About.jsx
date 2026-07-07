@@ -43,7 +43,8 @@ export default function About() {
       const newIndex = teamIndex + 1;
       setTeamIndex(newIndex);
       if (teamTrackRef.current) {
-        const offset = (newIndex * teamTrackRef.current.offsetWidth) / visibleTeamCards;
+        const cards = teamTrackRef.current.querySelectorAll('.trainer-card');
+        const offset = cards[newIndex] ? cards[newIndex].offsetLeft : 0;
         setTeamOffsetPx(offset);
       }
     }
@@ -54,7 +55,8 @@ export default function About() {
       const newIndex = teamIndex - 1;
       setTeamIndex(newIndex);
       if (teamTrackRef.current) {
-        const offset = (newIndex * teamTrackRef.current.offsetWidth) / visibleTeamCards;
+        const cards = teamTrackRef.current.querySelectorAll('.trainer-card');
+        const offset = cards[newIndex] ? cards[newIndex].offsetLeft : 0;
         setTeamOffsetPx(offset);
       }
     }
