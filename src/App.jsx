@@ -54,15 +54,15 @@ import testimonialImg from "../imgs/testimonials/chinnappan.jpeg";
 import testimonialsBg from "../imgs/testimonials-bg.jpeg";
 
 const services = [
-  { title: "Parkour", image: parkourImg },
-  { title: "Calisthenics", image: calisthenicsImg },
-  { title: "Ninja Movement Training", image: ninjaImg },
-  { title: "Meditation & WellBeing", image: yogaImg },
-  { title: "Film Stunt Design", image: filmStuntImg },
-  { title: "Freestyle Nunchukus", image: nunchucksImg },
-  { title: "Traditional Karla", image: karlaImg },
-  { title: "Fun Fitness Activities", image: fitnessImg },
-  { title: "Diet and Nutrition", image: dietImg }
+  { title: "Parkour", image: parkourImg, description: "Parkour is the art of moving through your environment with speed, flow and precision. At Traceurs Park, we train you to vault, jump and climb real obstacles — building explosive strength, spatial awareness and unshakeable confidence in your body's movement." },
+  { title: "Calisthenics", image: calisthenicsImg, description: "Calisthenics uses your own bodyweight to build lean muscle, control and functional strength. From push-ups to muscle-ups, our progressive training system takes you from beginner fundamentals to advanced freestyle skills at your own pace." },
+  { title: "Ninja Movement Training", image: ninjaImg, description: "Inspired by obstacle-course athleticism, Ninja Movement Training combines agility, grip strength and full-body coordination. Our circuits challenge you to conquer rigs, rings and balance beams — developing the reflexes and resilience of a true ninja." },
+  { title: "Meditation & WellBeing", image: yogaImg, description: "True fitness begins in the mind. Our meditation and wellbeing sessions guide you through breath-work, mindfulness and restorative movement to reduce stress, sharpen focus and harmonise your mental and physical health." },
+  { title: "Film Stunt Design", image: filmStuntImg, description: "Learn the craft behind cinematic action. Our film stunt program teaches controlled falls, precision jumps and choreographed movement sequences — giving aspiring performers and fitness enthusiasts a safe, professional introduction to the world of stunt work." },
+  { title: "Freestyle Nunchukus", image: nunchucksImg, description: "Freestyle Nunchukus blends martial-arts tradition with creative expression. Students learn grip techniques, spinning patterns and flowing combinations that sharpen hand-eye coordination, rhythm and mental focus in every session." },
+  { title: "Traditional Karla", image: karlaImg, description: "Karlakattai is an ancient Tamil martial fitness art using weighted wooden clubs. This traditional practice builds exceptional shoulder mobility, rotational power and grip endurance — reconnecting you with a rich heritage of physical discipline." },
+  { title: "Fun Fitness Activities", image: fitnessImg, description: "Fitness doesn't have to feel like a chore. Our fun fitness sessions incorporate games, team challenges and dynamic drills that keep energy high and motivation higher — perfect for all ages looking to move, laugh and get fit together." },
+  { title: "Diet and Nutrition", image: dietImg, description: "Performance is built in the kitchen as much as in the gym. Our nutrition coaching provides personalised meal guidance aligned with your training goals — whether you want to lose fat, gain muscle or simply fuel your active lifestyle with the right foods." }
 ];
 
 const trainers = [
@@ -232,6 +232,7 @@ function App() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [statsAnimationTick, setStatsAnimationTick] = useState(0);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [flippedService, setFlippedService] = useState(null);
   const achievementsInViewRef = useRef(false);
   const achievementsSectionRef = useRef(null);
   const navLinksRef = useRef(null);
@@ -556,11 +557,19 @@ function App() {
                     <h1>{banner.title}</h1>
                     <p>{banner.subtitle}</p>
                     <div className="hero-actions hero-actions-inline">
+                      {/* Mobile: WhatsApp */}
                       <a
-                        className="cta-btn"
+                        className="cta-btn hero-cta-mobile"
                         href="https://wa.me/919363503310?text=More%20Information%20about%20Traceurs%20Park"
                         target="_blank"
                         rel="noreferrer"
+                      >
+                        Contact or Register
+                      </a>
+                      {/* Desktop: Email */}
+                      <a
+                        className="cta-btn hero-cta-desktop"
+                        href="mailto:traceurspark@gmail.com?subject=More%20Information%20about%20Traceurs%20Park"
                       >
                         Contact or Register
                       </a>
@@ -604,9 +613,25 @@ function App() {
             </div>
             <div className="services-grid">
               {services.map((service) => (
-                <article className="service-card" key={service.title}>
-                  <img src={service.image} alt={service.title} />
-                  <div className="service-name-chip">{service.title}</div>
+                <article
+                  className={`service-card${flippedService === service.title ? " flipped" : ""}`}
+                  key={service.title}
+                  onClick={() => setFlippedService(flippedService === service.title ? null : service.title)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === "Enter" && setFlippedService(flippedService === service.title ? null : service.title)}
+                  aria-label={`${service.title} - click to see details`}
+                >
+                  <div className="service-card-inner">
+                    <div className="service-card-front">
+                      <img src={service.image} alt={service.title} />
+                      <div className="service-name-chip">{service.title}</div>
+                    </div>
+                    <div className="service-card-back">
+                      <h3>{service.title}</h3>
+                      <p>{service.description}</p>
+                    </div>
+                  </div>
                 </article>
               ))}
             </div>
@@ -861,8 +886,9 @@ function App() {
               </ul>
               <div className="contact-actions">
                 <div className="contact-actions-stack">
+                  {/* Mobile only: WhatsApp */}
                   <a
-                    className="cta-btn"
+                    className="cta-btn hero-cta-mobile"
                     href="https://wa.me/919363503310?text=More%20Information%20about%20Traceurs%20Park"
                     target="_blank"
                     rel="noreferrer"
