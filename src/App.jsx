@@ -17,6 +17,13 @@ import {
   FaYoutube
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import About from "./About";
+import Achievements from "./Achievements";
+import Gallery from "./Gallery";
+import Blog from "./Blog";
+import Career from "./Career";
+import OtherServices from "./OtherServices";
+import ContactPage from "./ContactPage";
 
 import logo from "../imgs/logos/logo.png";
 import blackLogo from "../imgs/logos/black-logo.png";
@@ -66,12 +73,12 @@ const services = [
 ];
 
 const trainers = [
-  { name: "Chief Trainer", focus: "Advanced Parkour and Coaching", image: trainerChief },
-  { name: "Women Trainer", focus: "Strength and Inclusive Movement", image: trainerWomen },
-  { name: "Body Building Trainer", focus: "Power, Endurance and Conditioning", image: trainerBody },
-  { name: "Animal Flow Trainer", focus: "Mobility, Ground Flow and Agility", image: trainerAnimalFlow },
-  { name: "Nunchucks Trainer", focus: "Freestyle Nunchukus Fundamentals", image: trainerNunchucks },
-  { name: "Calisthenics Trainer", focus: "Breath, Balance and Flexibility", image: null }
+  { name: "Mohamed Imran Shajahan", focus: "Creative Director", intro: "Chief Trainer: Advanced Parkour Training and Coaching", instagram: "https://www.instagram.com/imran_parkour" ,image: trainerChief },
+  { name: "Tharani Murali", focus: "Women Trainer", intro: "Strength and Inclusive Movement exclusive for women", instagram: "", image: trainerWomen },
+  { name: "Vignesh", focus: "Body Building Trainer", intro: "Power, Endurance and Conditioning focused body building training forged for individuals based on their needs", instagram: "", image: trainerBody },
+  { name: "Karnesh", focus: "Animal Flow Trainer", intro: "Mobility, Ground Flow and Agility. Master natural movement through animal-inspired body flow training", instagram: "", image: trainerAnimalFlow },
+  { name: "M.A. Gokul", focus: "Freestyle Nunchucks Trainer", intro: "Unlock the art of nunchucks with skill, discipline, and flow. Train smarter. Strike faster. Move sharper", instagram: "", image: trainerNunchucks },
+  { name: "Mohammed Suhail", focus: "Calisthenics Trainer", intro: "Your body is the gym. Let's make it unstoppable. Progressive bodyweight training for real-world strength", instagram: "", image: null }
 ];
 
 const stats = [
@@ -224,6 +231,7 @@ function App() {
     }
   ];
 
+  const [currentPage, setCurrentPage] = useState("home");
   const [activeBanner, setActiveBanner] = useState(0);
   const [animatedStats, setAnimatedStats] = useState(stats.map(() => 0));
   const [teamIndex, setTeamIndex] = useState(0);
@@ -473,6 +481,11 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Scroll to top when page changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPage]);
+
   useEffect(() => {
     setAnimatedStats(stats.map(() => 0));
 
@@ -502,6 +515,8 @@ function App() {
     return () => clearTimeout(timer);
   }, [activeTestimonial]);
 
+
+
   return (
     <div className="page-shell">
       <header className="site-header">
@@ -517,27 +532,27 @@ function App() {
 
         <div className="topbar">
           <div className="container topbar-inner">
-            <a className="brand" href="#home">
+            <a className="brand" href="#home" onClick={(e) => { e.preventDefault(); setCurrentPage("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
               <img src={logo} alt="Traceurs Park logo" />
               <span>Traceurs Park</span>
             </a>
             <nav ref={navLinksRef} className="nav-links" aria-label="Main navigation">
-              <a href="#home">Home</a>
-              <a href="/about-us">About Us</a>
-              <a href="#services">Our Services</a>
-              <a href="#achievements">Achievements</a>
-              <a href="/gallery">Gallery</a>
-              <a href="/blog">Blog</a>
-              <a href="/career">Career</a>
-              <a href="/other-services">Other Services</a>
-              <a href="#contact">Contact</a>
+              <a href="#home" onClick={(e) => { e.preventDefault(); setCurrentPage("home"); }}>Home</a>
+              <a href="#about" onClick={(e) => { e.preventDefault(); setCurrentPage("about"); }}>About Us</a>
+              <a href="#services" onClick={(e) => { e.preventDefault(); setCurrentPage("home"); setTimeout(() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" }), 0); }}>Our Services</a>
+              <a href="#achievements" onClick={(e) => { e.preventDefault(); setCurrentPage("achievements"); }}>Achievements</a>
+              <a href="#gallery" onClick={(e) => { e.preventDefault(); setCurrentPage("gallery"); }}>Gallery</a>
+              <a href="#blog" onClick={(e) => { e.preventDefault(); setCurrentPage("blog"); }}>Blog</a>
+              <a href="#career" onClick={(e) => { e.preventDefault(); setCurrentPage("career"); }}>Career</a>
+              <a href="#other-services" onClick={(e) => { e.preventDefault(); setCurrentPage("other-services"); }}>Other Services</a>
+              <a href="#contact-page" onClick={(e) => { e.preventDefault(); setCurrentPage("contact"); }}>Contact</a>
             </nav>
           </div>
         </div>
       </header>
 
-      <main>
-        <section className="hero" id="home">
+      <main className="main-content">
+        {currentPage === 'home' && (<><section className="hero" id="home">
           <div
             className="hero-carousel"
             aria-label="Auto scrolling banner with three images"
@@ -699,20 +714,15 @@ function App() {
                           <div className="trainer-placeholder-img" aria-label={trainer.name} />
                         )}
                         <div className="trainer-overlay-links" aria-label={`${trainer.name} social links`}>
-                          <a href="#" aria-label={`${trainer.name} Instagram placeholder`}>
+                          <a href={trainer.instagram || "#"} aria-label={`${trainer.name} Instagram placeholder`}>
                             <FaInstagram />
-                          </a>
-                          <a href="#" aria-label={`${trainer.name} LinkedIn placeholder`}>
-                            <FaLinkedinIn />
                           </a>
                         </div>
                       </div>
                       <div className="trainer-body">
                         <h3>{trainer.name}</h3>
-                        <p>{trainer.focus}</p>
-                        <p className="placeholder-intro">
-                          Placeholder intro: Add trainer bio, achievements, and coaching style.
-                        </p>
+                        <p><b>{trainer.focus}</b></p>
+                        <p>{trainer.intro}</p>
                       </div>
                     </article>
                   ))}
@@ -879,7 +889,7 @@ function App() {
                 </li>
                 <li>
                   <FaFacebookF />
-                  <a href="#" aria-label="Facebook placeholder">
+                  <a href="https://www.facebook.com/share/1FpxTeUvQu/" target="_blank" rel="noreferrer">
                     facebook.com/traceurspark
                   </a>
                 </li>
@@ -924,6 +934,15 @@ function App() {
             </article>
           </div>
         </section>
+        </>)}
+
+        {currentPage === 'about' && <About />}
+        {currentPage === 'achievements' && <Achievements />}
+        {currentPage === 'gallery' && <Gallery />}
+        {currentPage === 'blog' && <Blog />}
+        {currentPage === 'career' && <Career />}
+        {currentPage === 'other-services' && <OtherServices />}
+        {currentPage === 'contact' && <ContactPage />}
       </main>
 
       <footer className="footer">
