@@ -41,7 +41,7 @@ import trainerWomen from "../imgs/trainers/Women-trainer.jpeg";
 import trainerBody from "../imgs/trainers/Body Building Trainer.jpeg";
 import trainerAnimalFlow from "../imgs/trainers/Animal Flow Trainer.jpeg";
 import trainerNunchucks from "../imgs/trainers/Nunchucks-trainer.jpeg";
-import trainerYoga from "../imgs/trainers/yoga-trainer.jpeg";
+
 
 import partnerWayToSuccess from "../imgs/client-logos/way to success.jfif.jpeg";
 import partnerDovyo from "../imgs/client-logos/dovyo.png";
@@ -57,7 +57,7 @@ const services = [
   { title: "Parkour", image: parkourImg },
   { title: "Calisthenics", image: calisthenicsImg },
   { title: "Ninja Movement Training", image: ninjaImg },
-  { title: "Yoga", image: yogaImg },
+  { title: "Meditation & WellBeing", image: yogaImg },
   { title: "Film Stunt Design", image: filmStuntImg },
   { title: "Freestyle Nunchukus", image: nunchucksImg },
   { title: "Traditional Karla", image: karlaImg },
@@ -71,7 +71,7 @@ const trainers = [
   { name: "Body Building Trainer", focus: "Power, Endurance and Conditioning", image: trainerBody },
   { name: "Animal Flow Trainer", focus: "Mobility, Ground Flow and Agility", image: trainerAnimalFlow },
   { name: "Nunchucks Trainer", focus: "Freestyle Nunchukus Fundamentals", image: trainerNunchucks },
-  { name: "Yoga Trainer", focus: "Breath, Balance and Flexibility", image: trainerYoga }
+  { name: "Calisthenics Trainer", focus: "Breath, Balance and Flexibility", image: null }
 ];
 
 const stats = [
@@ -663,7 +663,11 @@ function App() {
                   {trainers.map((trainer) => (
                     <article className="trainer-card" key={trainer.name}>
                       <div className="trainer-media">
-                        <img src={trainer.image} alt={trainer.name} />
+                        {trainer.image ? (
+                          <img src={trainer.image} alt={trainer.name} />
+                        ) : (
+                          <div className="trainer-placeholder-img" aria-label={trainer.name} />
+                        )}
                         <div className="trainer-overlay-links" aria-label={`${trainer.name} social links`}>
                           <a href="#" aria-label={`${trainer.name} Instagram placeholder`}>
                             <FaInstagram />
