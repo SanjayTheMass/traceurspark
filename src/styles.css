@@ -3,13 +3,16 @@
   --surface: #ffffff;
   --ink: #111111;
   --muted: #5e5e5e;
-  --primary: #c03221;
-  --accent: #00887a;
+  --primary: #da0501;
+  --primary-dark: #a10301;
+  --brand-black: #111111;
+  --accent: #da0501;
   --gold: #f4b41a;
   --line: #e4ddd2;
   --shadow: 0 14px 32px rgba(17, 17, 17, 0.12);
-  --support-bar-h: 24px;
+  --support-bar-h: 32px;
   --topbar-h: 56px;
+  --newsletter-bar-h: 34px;
 }
 
 * {
@@ -45,7 +48,7 @@ a {
 
 .site-header {
   position: relative;
-  padding-top: calc(var(--support-bar-h) + var(--topbar-h));
+  padding-top: calc(var(--support-bar-h) + var(--topbar-h) + var(--newsletter-bar-h));
   z-index: 80;
 }
 
@@ -59,29 +62,63 @@ main {
   left: 0;
   right: 0;
   z-index: 86;
-  background: #0f1722;
-  color: #eef5ff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(90deg, var(--brand-black), #171717);
+  color: #f7f7f7;
+  border-bottom: 2px solid var(--primary);
 }
 
 .support-bar-inner {
-  min-height: 24px;
+  min-height: var(--support-bar-h);
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
+  justify-content: flex-start;
   font-size: 0.74rem;
+  padding: 4px 0;
 }
 
 .support-links {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  width: 100%;
   gap: 10px;
 }
 
 .support-label {
   font-weight: 700;
+}
+
+.support-contact-grid {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.support-link {
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.support-phone {
+  text-align: left;
+  margin-right: auto;
+}
+
+.support-email {
+  text-align: right;
+  margin-left: auto;
+}
+
+.support-link:hover {
+  color: #ffffff;
 }
 
 .topbar {
@@ -101,6 +138,63 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 14px;
+}
+
+.newsletter-bar {
+  position: fixed;
+  top: calc(var(--support-bar-h) + var(--topbar-h));
+  left: 0;
+  right: 0;
+  z-index: 84;
+  height: var(--newsletter-bar-h);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgba(110, 4, 2, 0.94), rgba(218, 5, 1, 0.94), rgba(110, 4, 2, 0.94));
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.newsletter-marquee {
+  width: 100%;
+  overflow: hidden;
+}
+
+.newsletter-track {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding-right: 28px;
+  animation: newsletter-scroll 20s linear infinite;
+  will-change: transform;
+}
+
+.newsletter-item {
+  position: relative;
+  flex: 0 0 auto;
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.28);
+  white-space: nowrap;
+}
+
+.newsletter-item::after {
+  content: "//";
+  margin-left: 28px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes newsletter-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .brand {
@@ -169,7 +263,8 @@ main {
 
 .cta-btn {
   color: #fff;
-  background: linear-gradient(120deg, var(--primary), #e74b2f);
+  border: 1.5px solid var(--primary-dark);
+  background: linear-gradient(120deg, var(--primary), #ff3b36);
   box-shadow: var(--shadow);
 }
 
@@ -185,11 +280,18 @@ main {
 
 .cta-btn:hover {
   transform: translateY(-1px);
+  background: linear-gradient(120deg, #ff3b36, var(--primary));
 }
 
 .ghost-btn {
-  border: 1.5px solid var(--line);
-  background: var(--surface);
+  color: #fff;
+  border: 1.5px solid #1f1f1f;
+  background: linear-gradient(130deg, var(--brand-black), #212121);
+}
+
+.ghost-btn:hover {
+  border-color: var(--primary);
+  background: linear-gradient(130deg, #1c1c1c, #2a2a2a);
 }
 
 .hero {
@@ -287,9 +389,9 @@ main {
 }
 
 .hero-actions-inline .ghost-btn {
-  color: #101010;
-  background: #ffffff;
-  border-color: #ffffff;
+  color: #fff;
+  border-color: #2b2b2b;
+  background: linear-gradient(130deg, #121212, #262626);
 }
 
 .banner-nav-btn {
@@ -541,16 +643,16 @@ main {
   display: grid;
   place-items: center;
   position: relative;
-  background: conic-gradient(var(--gold) var(--ring-progress), rgba(255, 255, 255, 0.18) 0);
+  background: conic-gradient(var(--primary) var(--ring-progress), rgba(255, 255, 255, 0.18) 0);
   transition: background 0.12s linear;
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.16);
+  box-shadow: 0 0 0 2px rgba(218, 5, 1, 0.38);
 }
 
 .stat-loader-inner {
   position: absolute;
   inset: 10px;
   border-radius: 50%;
-  background: linear-gradient(120deg, #0f1420, #1b2a38);
+  background: linear-gradient(120deg, #170404, #2b0907);
 }
 
 .stat-loader h3 {
@@ -580,14 +682,14 @@ main {
 
 .team-track {
   display: flex;
-  gap: 45px;
+  gap: 24px;
   width: 100%;
   justify-content: flex-start;
   transition: transform 0.45s ease;
 }
 
 .trainer-card {
-  flex: 0 0 calc((100% - 90px) / 3);
+  flex: 0 0 calc((100% - 48px) / 3);
 }
 
 .team-nav-btn {
@@ -1029,6 +1131,38 @@ main {
   gap: 10px;
 }
 
+.partners-marquee {
+  width: 100%;
+  overflow: hidden;
+}
+
+.partners-track {
+  width: max-content;
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  animation: partners-scroll 34s linear infinite;
+  will-change: transform;
+}
+
+.partners-marquee:hover .partners-track {
+  animation-play-state: paused;
+}
+
+.partners-track .partner-card {
+  flex: 0 0 clamp(150px, 14vw, 190px);
+}
+
+@keyframes partners-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 #partners .section-head {
   text-align: center;
 }
@@ -1127,20 +1261,27 @@ main {
 }
 
 .contact-actions-stack .contact-map-btn {
-  background: #2f7d32;
-  color: #fff;
-  border-color: #2f7d32;
+  background: #ffffff;
+  color: var(--brand-black);
+  border-color: rgba(17, 17, 17, 0.22);
 }
 
 .contact-actions-stack .contact-subscribe-btn {
-  background: #1565c0;
+  background: linear-gradient(120deg, var(--primary), #ff3b36);
   color: #fff;
-  border-color: #1565c0;
+  border-color: var(--primary-dark);
 }
 
-.contact-actions-stack .contact-map-btn:hover,
 .contact-actions-stack .contact-subscribe-btn:hover {
   transform: translateY(-1px);
+  background: linear-gradient(120deg, #ff3b36, var(--primary));
+}
+
+.contact-actions-stack .contact-map-btn:hover {
+  transform: translateY(-1px);
+  background: #f5f5f5;
+  color: #000000;
+  border-color: rgba(17, 17, 17, 0.35);
 }
 
 .contact-mini-map {
@@ -1278,15 +1419,16 @@ main {
 
 @media (max-width: 1060px) {
   :root {
-    --support-bar-h: 24px;
+    --support-bar-h: 32px;
     --topbar-h: 56px;
+    --newsletter-bar-h: 32px;
   }
 
   .support-bar-inner {
-    min-height: 24px;
-    justify-content: flex-end;
+    min-height: var(--support-bar-h);
+    justify-content: flex-start;
     padding: 4px 0;
-    text-align: right;
+    text-align: left;
   }
 
   .nav-links {
@@ -1307,15 +1449,11 @@ main {
   }
 
   .team-track {
-    gap: 30px;
+    gap: 20px;
   }
 
   .trainer-card {
-    flex-basis: calc((100% - 24px) / 2);
-  }
-
-  .partners-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    flex-basis: calc((100% - 20px) / 2);
   }
 
   .gallery-grid {
@@ -1338,13 +1476,35 @@ main {
 
 @media (max-width: 740px) {
   :root {
-    --support-bar-h: 24px;
+    --support-bar-h: 54px;
     --topbar-h: 56px;
+    --newsletter-bar-h: 30px;
   }
 
   .support-links {
-    justify-content: flex-end;
-    gap: 8px 14px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .support-label {
+    width: 100%;
+    text-align: left;
+  }
+
+  .support-contact-grid {
+    width: 100%;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .support-email {
+    text-align: left;
+    margin-left: 0;
+  }
+
+  .newsletter-item {
+    font-size: 0.72rem;
   }
 
   .topbar-inner {
@@ -1561,12 +1721,11 @@ main {
   }
 
   .partners-grid {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 6px;
+    gap: 8px;
   }
 
   .partner-card {
-    min-height: 100px;
+    min-height: 92px;
     padding: 6px;
     gap: 4px;
   }
@@ -1579,6 +1738,10 @@ main {
   .partner-card h3 {
     font-size: 0.62rem;
     line-height: 1.15;
+  }
+
+  .partners-track {
+    animation-duration: 26s;
   }
 
   .section {
@@ -1644,6 +1807,10 @@ main {
     min-height: 40px;
     padding: 6px 8px;
     font-size: 0.66rem;
+  }
+
+  .contact-actions-stack .contact-subscribe-btn {
+    display: none;
   }
 
   .contact-mini-map {

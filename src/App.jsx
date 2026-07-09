@@ -73,16 +73,19 @@ const services = [
 ];
 
 const trainers = [
-  { name: "Mohamed Imran Shajahan", focus: "Creative Director", intro: "Chief Trainer: Advanced Parkour Training and Coaching", instagram: "https://www.instagram.com/imran_parkour" ,image: trainerChief },
-  { name: "Tharani Murali", focus: "Women Trainer", intro: "Strength and Inclusive Movement exclusive for women", instagram: "https://www.instagram.com/thara_sdiaryy", image: trainerWomen },
+  { name: "Mohamed Imran Shajahan", focus: "Founder & Master Coach", intro: "Chief Trainer: Advanced Parkour Training and Coaching", instagram: "https://www.instagram.com/imran_parkour" ,image: trainerChief },
+  { name: "Muthu Kumaran S", focus: "Relationship Manager", intro: "Managing relationships and ensuring client satisfaction", instagram: "https://www.instagram.com/mk_muthuu" ,image: null },  
   { name: "Vignesh", focus: "Body Building Trainer", intro: "Power, Endurance and Conditioning focused body building training forged for individuals based on their needs", instagram: "https://www.instagram.com/_theprabhu__", image: trainerBody },
   { name: "Karnesh", focus: "Animal Flow Trainer", intro: "Mobility, Ground Flow and Agility. Master natural movement through animal-inspired body flow training", instagram: "https://www.instagram.com/tn_45_mt_rider_", image: trainerAnimalFlow },
   { name: "M.A. Gokul", focus: "Freestyle Nunchucks Trainer", intro: "Unlock the art of nunchucks with skill, discipline, and flow. Train smarter. Strike faster. Move sharper", instagram: "https://www.instagram.com/arul_venkatesh", image: trainerNunchucks },
-  { name: "Mohammed Suhail", focus: "Calisthenics Trainer", intro: "Your body is the gym. Let's make it unstoppable. Progressive bodyweight training for real-world strength", instagram: "https://www.instagram.com/iam_suhail__", image: null }
+  { name: "Mohammed Suhail", focus: "Calisthenics Trainer", intro: "Your body is the gym. Let's make it unstoppable. Progressive bodyweight training for real-world strength", instagram: "https://www.instagram.com/iam_suhail__", image: null },
+  { name: "Tharani Murali", focus: "Women Trainer", intro: "Strength and Inclusive Movement exclusive for women", instagram: "https://www.instagram.com/thara_sdiaryy", image: trainerWomen },
+  { name: "Mohammed Wasim Shajahan", focus: "Technical Manager", intro: "Overseeing technical operations and ensuring smooth workflow", instagram: "https://www.instagram.com/mr.mohamedwasim" ,image: null },
+  { name: "Arun", focus: "Parkour Trainer", intro: "Parkour Training and Coaching", instagram: "https://www.instagram.com/devil_of_parkour" ,image: null },
 ];
 
 const stats = [
-  { label: "Experience", target: 12, suffix: "+ Years" },
+  { label: "Experience", target: 14, suffix: "+ Years" },
   { label: "Client Count", target: 2500, suffix: "+" },
   { label: "Trained Student Count", target: 6000, suffix: "+" }
 ];
@@ -160,33 +163,39 @@ const testimonials = [
 
 const videos = [
   {
-    title: "Legendary Parkour Motivation",
-    description: "Placeholder for a famous movement inspiration video.",
-    link: "https://www.youtube.com/"
+    title: "New World Record attempt🔥 6yrs Old Girl😇 Team Trichy Parkour🎉",
+    description: "New Record With Great Skills \nMs.Aaradhana(age 6) 1st standard, \nHas Finished her 2.5kms run \nwith blind fold and skipping😇 \nAm So Happy Ipdi Students ah ready pannadhula🎉 #trichyparkour",
+    link: "https://www.youtube.com/watch?v=-Ml8d7JyZYE"
   },
   {
-    title: "Important Safety and Technique",
-    description: "Placeholder for an important fundamentals tutorial.",
-    link: "https://www.youtube.com/"
+    title: "POV Parkour Chase on Public Park (TPK) 😎😎😎",
+    description: "Traceurs park Community Showcase\n Parkour chasing in Public park\n Early morning warm up chase..😂😂 \n#Team TPK😎\n#traceurspark\n",
+    link: "https://www.youtube.com/watch?v=ykMrhKRKbE8"
   },
   {
-    title: "Traceurs Community Showcase",
-    description: "Placeholder for your top training montage video.",
-    link: "https://www.youtube.com/"
+    title: "Team Tpk's Jumping Rope Fest - 2021 🏆",
+    description: "Team Tpk's Jumping Rope Fest - 2021 🏆🏆\nI've always believed that if you put in the work, the results will come....\nOne man cannot make a team.\n#trichyparkour #traceurspark #jumpingrope #ropechallenge",
+    link: "https://www.youtube.com/watch?v=v1XW8S2LjB0"
   }
 ];
 
 const address =
-  "67, phase, Chitrakoot enclave, No.66, 1&2, Vayalur Rd, ukt malai, MM Nagar, Tiruchirappalli, Tamil Nadu 620102";
+  "No. 66, 67, Chitrakoot enclave, Vayalur Road, ukt malai, MM Nagar Extension, Tiruchirappalli, Tamil Nadu 620102";
 
 const contactAddress =
-  "67, phase, Chitrakoot enclave, No.66, 1&2, \nVayalur Rd, ukt malai, MM Nagar,\nTiruchirappalli, Tamil Nadu 620102";
+  "No. 66, 67, Chitrakoot enclave, \nVayalur Road, ukt malai, MM Nagar Extension, \nTiruchirappalli, Tamil Nadu 620102";
 
 const mapEmbed =
   "https://maps.google.com/maps?q=67%2C%20phase%2C%20Chitrakoot%20enclave%2C%20No.66%2C%201%262%2C%20Vayalur%20Rd%2C%20ukt%20malai%2C%20MM%20Nagar%2C%20Tiruchirappalli%2C%20Tamil%20Nadu%20620102&output=embed";
 
 const subscribeMailto =
   "mailto:traceurspark@gmail.com?subject=Subscribe%20to%20trichy%20parkour%20updates";
+
+const newsletterItems = [
+  "Take the First Step Toward a Stronger Lifestyle with TraceursPark - Trial Class @ ₹149",
+  "Avail Daily passes @ ₹449 !!!",
+  "Enjoy group sessions pass upto 10 members @ ₹1299 !!!"
+];
 
 const BANNER_AUTO_SCROLL_MS = 5500;
 const TEAM_TILES_PER_SCROLL = 3;
@@ -232,7 +241,8 @@ function App() {
   ];
 
   const [currentPage, setCurrentPage] = useState("home");
-  const [activeBanner, setActiveBanner] = useState(0);
+  const [bannerTrackIndex, setBannerTrackIndex] = useState(0);
+  const [bannerTrackHasTransition, setBannerTrackHasTransition] = useState(true);
   const [animatedStats, setAnimatedStats] = useState(stats.map(() => 0));
   const [teamIndex, setTeamIndex] = useState(0);
   const [visibleTeamCards, setVisibleTeamCards] = useState(getVisibleTeamCards);
@@ -250,6 +260,7 @@ function App() {
   const testimonialTouchStartX = useRef(null);
 
   const maxTeamIndex = Math.max(0, trainers.length - visibleTeamCards);
+  const bannerSlides = useMemo(() => [...banners, banners[0]], [banners]);
   const statsDisplay = useMemo(
     () =>
       stats.map((stat, index) => {
@@ -261,13 +272,28 @@ function App() {
   );
 
   const nextBanner = () => {
-    setActiveBanner((previousBanner) => (previousBanner + 1) % banners.length);
+    setBannerTrackHasTransition(true);
+    setBannerTrackIndex((previousBanner) => Math.min(previousBanner + 1, banners.length));
   };
 
   const previousBanner = () => {
-    setActiveBanner((previousBannerIndex) =>
-      (previousBannerIndex - 1 + banners.length) % banners.length
-    );
+    setBannerTrackHasTransition(true);
+    setBannerTrackIndex((previousBannerIndex) => {
+      if (previousBannerIndex === 0 || previousBannerIndex === banners.length) {
+        return banners.length - 1;
+      }
+
+      return previousBannerIndex - 1;
+    });
+  };
+
+  const handleHeroTrackTransitionEnd = () => {
+    if (bannerTrackIndex !== banners.length) {
+      return;
+    }
+
+    setBannerTrackHasTransition(false);
+    setBannerTrackIndex(0);
   };
 
   const handleHeroTouchStart = (event) => {
@@ -425,7 +451,8 @@ function App() {
       const nextLeft = nav.scrollLeft + nav.clientWidth;
 
       if (nextLeft >= maxScrollLeft - 2) {
-        nav.scrollTo({ left: 0, behavior: "smooth" });
+        nav.scrollTo({ left: maxScrollLeft, behavior: "smooth" });
+        window.clearInterval(intervalId);
         return;
       }
 
@@ -436,12 +463,42 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (currentPage !== "home" || maxTeamIndex <= 0) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      setTeamIndex((previousIndex) =>
+        previousIndex >= maxTeamIndex ? 0 : previousIndex + 1
+      );
+    }, 4200);
+
+    return () => window.clearTimeout(timer);
+  }, [teamIndex, maxTeamIndex, currentPage]);
+
+  useEffect(() => {
+    if (bannerTrackHasTransition) {
+      return;
+    }
+
+    const frameId = window.requestAnimationFrame(() => {
+      setBannerTrackHasTransition(true);
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [bannerTrackHasTransition]);
+
+  useEffect(() => {
+    if (currentPage !== "home") {
+      return;
+    }
+
     const timer = setTimeout(() => {
       nextBanner();
     }, BANNER_AUTO_SCROLL_MS);
 
     return () => clearTimeout(timer);
-  }, [activeBanner, banners.length]);
+  }, [bannerTrackIndex, banners.length, currentPage]);
 
   useEffect(() => {
     const section = achievementsSectionRef.current;
@@ -523,9 +580,15 @@ function App() {
         <div className="support-bar">
           <div className="container support-bar-inner">
             <div className="support-links">
-              <span className="support-label">Need Support:</span>
-              <a href="tel:+919363503310">+91 9363503310</a>
-              <a href="mailto:traceurspark@gmail.com">traceurspark@gmail.com</a>
+              <span className="support-label">Need Support?</span>
+              <div className="support-contact-grid">
+                <a className="support-link support-phone" href="tel:+919363503310">
+                  +91 9363503310
+                </a>
+                <a className="support-link support-email" href="mailto:traceurspark@gmail.com">
+                  traceurspark@gmail.com
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -538,7 +601,6 @@ function App() {
             </a>
             <nav ref={navLinksRef} className="nav-links" aria-label="Main navigation">
               <a href="#home" onClick={(e) => { e.preventDefault(); setCurrentPage("home"); }}>Home</a>
-              <a href="#services" onClick={(e) => { e.preventDefault(); setCurrentPage("home"); setTimeout(() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" }), 0); }}>Our Services</a>
               <a href="#about" onClick={(e) => { e.preventDefault(); setCurrentPage("about"); }}>About Us</a>
               <a href="#other-services" onClick={(e) => { e.preventDefault(); setCurrentPage("other-services"); }}>Our Works</a>
               <a href="#gallery" onClick={(e) => { e.preventDefault(); setCurrentPage("gallery"); }}>Gallery</a>
@@ -547,6 +609,18 @@ function App() {
               <a href="#achievements" onClick={(e) => { e.preventDefault(); setCurrentPage("achievements"); }}>Achievements</a>
               <a href="#contact-page" onClick={(e) => { e.preventDefault(); setCurrentPage("contact"); }}>Contact</a>
             </nav>
+          </div>
+        </div>
+
+        <div className="newsletter-bar" aria-label="Latest offers">
+          <div className="newsletter-marquee">
+            <div className="newsletter-track">
+              {[...newsletterItems, ...newsletterItems].map((item, index) => (
+                <span className="newsletter-item" key={`${item}-${index}`}>
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </header>
@@ -561,11 +635,15 @@ function App() {
           >
             <div
               className="hero-track"
-              style={{ transform: `translateX(-${activeBanner * 100}%)` }}
+              onTransitionEnd={handleHeroTrackTransitionEnd}
+              style={{
+                transform: `translateX(-${bannerTrackIndex * 100}%)`,
+                transition: bannerTrackHasTransition ? undefined : "none"
+              }}
               aria-live="polite"
             >
-              {banners.map((banner, index) => (
-                <article className="hero-slide" key={banner.alt} aria-hidden={index !== activeBanner}>
+              {bannerSlides.map((banner, index) => (
+                <article className="hero-slide" key={`${banner.alt}-${index}`} aria-hidden={index !== bannerTrackIndex}>
                   <img src={banner.image} alt={banner.alt} />
                   <div className="hero-overlay" />
                   <div className="hero-caption">
@@ -853,16 +931,28 @@ function App() {
               <h2 className="partners-main-title">Partners</h2>
               <p className="partners-subtitle">Trusted by Brands and Community Leaders</p>
             </div>
-            <div className="partners-grid">
-              {partners.map((partner) => (
-                <article className="partner-card" key={partner.name}>
-                  <img src={partner.logo} alt={partner.name} />
-                  <h3>{partner.name}</h3>
-                </article>
-              ))}
+            <div className="partners-marquee">
+              <div className="partners-grid partners-track">
+                {[...partners, ...partners].map((partner, index) => (
+                  <article className="partner-card" key={`${partner.name}-${index}`}>
+                    <img src={partner.logo} alt={partner.name} />
+                    <h3>{partner.name}</h3>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </section>
+
+        </>)}
+
+        {currentPage === 'about' && <About />}
+        {currentPage === 'achievements' && <Achievements />}
+        {currentPage === 'gallery' && <Gallery />}
+        {currentPage === 'blog' && <Blog />}
+        {currentPage === 'career' && <Career />}
+        {currentPage === 'other-services' && <OtherServices />}
+        {currentPage === 'contact' && <ContactPage />}
 
         <section className="section contact-section" id="contact">
           <div className="container contact-grid">
@@ -905,11 +995,11 @@ function App() {
                   >
                     Contact or Register
                   </a>
-                  <a className="ghost-btn contact-map-btn" href="https://maps.app.goo.gl/AgeMqVWusJUQKwkt8" target="_blank" rel="noreferrer">
-                    Open Map Location
-                  </a>
                   <a className="ghost-btn contact-subscribe-btn" href={subscribeMailto}>
                     Subscribe by Email
+                  </a>
+                  <a className="ghost-btn contact-map-btn" href="https://maps.app.goo.gl/AgeMqVWusJUQKwkt8" target="_blank" rel="noreferrer">
+                    Open Map Location
                   </a>
                 </div>
                 <div className="contact-mini-map" aria-label="Compact location map widget">
@@ -934,15 +1024,6 @@ function App() {
             </article>
           </div>
         </section>
-        </>)}
-
-        {currentPage === 'about' && <About />}
-        {currentPage === 'achievements' && <Achievements />}
-        {currentPage === 'gallery' && <Gallery />}
-        {currentPage === 'blog' && <Blog />}
-        {currentPage === 'career' && <Career />}
-        {currentPage === 'other-services' && <OtherServices />}
-        {currentPage === 'contact' && <ContactPage />}
       </main>
 
       <footer className="footer">
@@ -961,16 +1042,16 @@ function App() {
           <article>
             <h3>Quick Contact</h3>
             <p className="footer-contact-item">
-              <FaMapMarkerAlt />
-              <span>{address}</span>
+              <FaPhoneAlt />
+              <a href="tel:+919363503310">+91 9363503310</a>
             </p>
             <p className="footer-contact-item">
               <MdEmail />
               <a href="mailto:traceurspark@gmail.com">traceurspark@gmail.com</a>
             </p>
             <p className="footer-contact-item">
-              <FaPhoneAlt />
-              <a href="tel:+919363503310">+91 9363503310</a>
+              <FaMapMarkerAlt />
+              <span>{address}</span>
             </p>
           </article>
 
@@ -1000,8 +1081,7 @@ function App() {
           </article>
         </div>
         <div className="container">
-          <p className="footer-rights">© 2026 Traceurs Park. All rights reserved.</p>
-          <p className="footer-built-by">Built with ❤️ in India by <a href="https://witercients.com" target="_blank" rel="noreferrer">Witercients Academy</a></p>
+          <p className="footer-rights">© 2026 <a href="https://www.instagram.com/traceurspark" target="_blank" rel="noreferrer">Traceurs Park</a>. All rights reserved.</p>
         </div>
       </footer>
 

@@ -9,12 +9,15 @@ import trainerAnimalFlow from "../imgs/trainers/Animal Flow Trainer.jpeg";
 import trainerNunchucks from "../imgs/trainers/Nunchucks-trainer.jpeg";
 
 const trainers = [
-  { name: "Mohamed Imran Shajahan", focus: "Creative Director", intro: "Chief Trainer: Advanced Parkour Training and Coaching", instagram: "https://www.instagram.com/imran_parkour" ,image: trainerChief },
-  { name: "Tharani Murali", focus: "Women Trainer", intro: "Strength and Inclusive Movement exclusive for women", instagram: "https://www.instagram.com/thara_sdiaryy", image: trainerWomen },
+  { name: "Mohamed Imran Shajahan", focus: "Founder & Master Coach", intro: "Chief Trainer: Advanced Parkour Training and Coaching", instagram: "https://www.instagram.com/imran_parkour" ,image: trainerChief },
+  { name: "Muthu Kumaran S", focus: "Relationship Manager", intro: "Managing relationships and ensuring client satisfaction", instagram: "https://www.instagram.com/mk_muthuu" ,image: null },  
   { name: "Vignesh", focus: "Body Building Trainer", intro: "Power, Endurance and Conditioning focused body building training forged for individuals based on their needs", instagram: "https://www.instagram.com/_theprabhu__", image: trainerBody },
   { name: "Karnesh", focus: "Animal Flow Trainer", intro: "Mobility, Ground Flow and Agility. Master natural movement through animal-inspired body flow training", instagram: "https://www.instagram.com/tn_45_mt_rider_", image: trainerAnimalFlow },
   { name: "M.A. Gokul", focus: "Freestyle Nunchucks Trainer", intro: "Unlock the art of nunchucks with skill, discipline, and flow. Train smarter. Strike faster. Move sharper", instagram: "https://www.instagram.com/arul_venkatesh", image: trainerNunchucks },
-  { name: "Mohammed Suhail", focus: "Calisthenics Trainer", intro: "Your body is the gym. Let's make it unstoppable. Progressive bodyweight training for real-world strength", instagram: "https://www.instagram.com/iam_suhail__", image: null }
+  { name: "Mohammed Suhail", focus: "Calisthenics Trainer", intro: "Your body is the gym. Let's make it unstoppable. Progressive bodyweight training for real-world strength", instagram: "https://www.instagram.com/iam_suhail__", image: null },
+  { name: "Tharani Murali", focus: "Women Trainer", intro: "Strength and Inclusive Movement exclusive for women", instagram: "https://www.instagram.com/thara_sdiaryy", image: trainerWomen },
+  { name: "Mohammed Wasim Shajahan", focus: "Technical Manager", intro: "Overseeing technical operations and ensuring smooth workflow", instagram: "https://www.instagram.com/mr.mohamedwasim" ,image: null },
+  { name: "Arun", focus: "Parkour Trainer", intro: "Parkour Training and Coaching", instagram: "https://www.instagram.com/devil_of_parkour" ,image: null },
 ];
 
 const TEAM_TILES_PER_SCROLL = 3;
@@ -242,7 +245,7 @@ export default function About() {
                       <div className="trainer-placeholder-img" aria-label={trainer.name} />
                     )}
                     <div className="trainer-overlay-links" aria-label={`${trainer.name} social links`}>
-                      <a href="#" target="_blank" rel="noreferrer" aria-label={`${trainer.name} Instagram placeholder`}>
+                      <a href={trainer.instagram || "#"} target="_blank" rel="noreferrer" aria-label={`${trainer.name} Instagram`}>
                         <FaInstagram />
                       </a>
                     </div>

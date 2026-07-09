@@ -39,7 +39,8 @@ export default function Career() {
                 style={{ 
                   display: "inline-block",
                   padding: "12px 24px",
-                  background: "#25D366",
+                  background: "linear-gradient(120deg, var(--primary), #ff3b36)",
+                  border: "1.5px solid var(--primary-dark)",
                   color: "#fff",
                   borderRadius: "25px",
                   textDecoration: "none",
