@@ -179,6 +179,29 @@ const videos = [
   }
 ];
 
+const getYouTubeVideoId = (url) => {
+  try {
+    const parsedUrl = new URL(url);
+
+    if (parsedUrl.hostname.includes("youtu.be")) {
+      return parsedUrl.pathname.slice(1);
+    }
+
+    if (parsedUrl.hostname.includes("youtube.com")) {
+      return parsedUrl.searchParams.get("v");
+    }
+
+    return null;
+  } catch {
+    return null;
+  }
+};
+
+const getYouTubeThumbnail = (url) => {
+  const videoId = getYouTubeVideoId(url);
+  return videoId ? `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg` : "";
+};
+
 const address =
   "No. 66, 67, Chitrakoot enclave, Vayalur Road, ukt malai, MM Nagar Extension, Tiruchirappalli, Tamil Nadu 620102";
 
@@ -249,10 +272,13 @@ function App() {
   const [teamOffsetPx, setTeamOffsetPx] = useState(0);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [statsAnimationTick, setStatsAnimationTick] = useState(0);
+  const [isTeamInView, setIsTeamInView] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [flippedService, setFlippedService] = useState(null);
+  const [hoveredVideoLink, setHoveredVideoLink] = useState(null);
   const achievementsInViewRef = useRef(false);
   const achievementsSectionRef = useRef(null);
+  const teamSectionRef = useRef(null);
   const navLinksRef = useRef(null);
   const heroTouchStartX = useRef(null);
   const teamTrackRef = useRef(null);
@@ -463,7 +489,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (currentPage !== "home" || maxTeamIndex <= 0) {
+    if (currentPage !== "home" || maxTeamIndex <= 0 || !isTeamInView) {
       return;
     }
 
@@ -474,7 +500,39 @@ function App() {
     }, 4200);
 
     return () => window.clearTimeout(timer);
-  }, [teamIndex, maxTeamIndex, currentPage]);
+  }, [teamIndex, maxTeamIndex, currentPage, isTeamInView]);
+
+  useEffect(() => {
+    if (currentPage !== "home") {
+      setIsTeamInView(false);
+      return;
+    }
+
+    const section = teamSectionRef.current;
+
+    if (!section) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsTeamInView(entry.isIntersecting);
+      },
+      { threshold: 0.35 }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, [currentPage]);
+
+  useEffect(() => {
+    if (isTeamInView) {
+      return;
+    }
+
+    setTeamIndex(0);
+  }, [isTeamInView]);
 
   useEffect(() => {
     if (bannerTrackHasTransition) {
@@ -501,6 +559,11 @@ function App() {
   }, [bannerTrackIndex, banners.length, currentPage]);
 
   useEffect(() => {
+    if (currentPage !== "home") {
+      achievementsInViewRef.current = false;
+      return;
+    }
+
     const section = achievementsSectionRef.current;
 
     if (!section) {
@@ -525,7 +588,7 @@ function App() {
     observer.observe(section);
 
     return () => observer.disconnect();
-  }, []);
+  }, [currentPage]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -600,14 +663,14 @@ function App() {
               <span>Traceurs Park</span>
             </a>
             <nav ref={navLinksRef} className="nav-links" aria-label="Main navigation">
-              <a href="#home" onClick={(e) => { e.preventDefault(); setCurrentPage("home"); }}>Home</a>
-              <a href="#about" onClick={(e) => { e.preventDefault(); setCurrentPage("about"); }}>About Us</a>
-              <a href="#other-services" onClick={(e) => { e.preventDefault(); setCurrentPage("other-services"); }}>Our Works</a>
-              <a href="#gallery" onClick={(e) => { e.preventDefault(); setCurrentPage("gallery"); }}>Gallery</a>
-              <a href="#blog" onClick={(e) => { e.preventDefault(); setCurrentPage("blog"); }}>Blog</a>
-              <a href="#career" onClick={(e) => { e.preventDefault(); setCurrentPage("career"); }}>Career</a>
-              <a href="#achievements" onClick={(e) => { e.preventDefault(); setCurrentPage("achievements"); }}>Achievements</a>
-              <a href="#contact-page" onClick={(e) => { e.preventDefault(); setCurrentPage("contact"); }}>Contact</a>
+              <a className={currentPage === "home" ? "is-active" : ""} href="#home" onClick={(e) => { e.preventDefault(); setCurrentPage("home"); }}>Home</a>
+              <a className={currentPage === "about" ? "is-active" : ""} href="#about" onClick={(e) => { e.preventDefault(); setCurrentPage("about"); }}>About Us</a>
+              <a className={currentPage === "other-services" ? "is-active" : ""} href="#other-services" onClick={(e) => { e.preventDefault(); setCurrentPage("other-services"); }}>Our Works</a>
+              <a className={currentPage === "gallery" ? "is-active" : ""} href="#gallery" onClick={(e) => { e.preventDefault(); setCurrentPage("gallery"); }}>Gallery</a>
+              <a className={currentPage === "blog" ? "is-active" : ""} href="#blog" onClick={(e) => { e.preventDefault(); setCurrentPage("blog"); }}>Blog</a>
+              <a className={currentPage === "career" ? "is-active" : ""} href="#career" onClick={(e) => { e.preventDefault(); setCurrentPage("career"); }}>Career</a>
+              <a className={currentPage === "achievements" ? "is-active" : ""} href="#achievements" onClick={(e) => { e.preventDefault(); setCurrentPage("achievements"); }}>Achievements</a>
+              <a className={currentPage === "contact" ? "is-active" : ""} href="#contact-page" onClick={(e) => { e.preventDefault(); setCurrentPage("contact"); }}>Contact</a>
             </nav>
           </div>
         </div>
@@ -755,7 +818,7 @@ function App() {
           </div>
         </section>
 
-        <section className="section" id="team">
+        <section ref={teamSectionRef} className="section" id="team">
           <div className="container">
             <div className="section-head">
               <h2 className="team-main-title">Our Team</h2>
@@ -910,14 +973,45 @@ function App() {
             </div>
             <div className="videos-grid">
               {videos.map((video) => (
-                <article className="video-card" key={video.title}>
+                <article
+                  className="video-card"
+                  key={video.title}
+                  onMouseEnter={() => setHoveredVideoLink(video.link)}
+                  onMouseLeave={() => setHoveredVideoLink(null)}
+                >
                   <div className="video-placeholder">
-                    <FaYoutube />
+                    {hoveredVideoLink === video.link && getYouTubeVideoId(video.link) ? (
+                      <iframe
+                        className="video-preview-frame"
+                        title={`${video.title} preview`}
+                        src={`https://www.youtube.com/embed/${getYouTubeVideoId(video.link)}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=${getYouTubeVideoId(video.link)}`}
+                        loading="lazy"
+                        allow="autoplay; encrypted-media; picture-in-picture"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                      />
+                    ) : getYouTubeThumbnail(video.link) ? (
+                      <img
+                        src={getYouTubeThumbnail(video.link)}
+                        alt={`${video.title} thumbnail`}
+                        loading="lazy"
+                      />
+                    ) : (
+                      <FaYoutube />
+                    )}
+                    <a
+                      className="video-tile-link"
+                      href={video.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`Open ${video.title} on YouTube`}
+                    >
+                      Open video
+                    </a>
                   </div>
                   <h3>{video.title}</h3>
                   <p>{video.description}</p>
-                  <a href={video.link} target="_blank" rel="noreferrer">
-                    Open Placeholder <FaArrowRight />
+                  <a className="video-open-link" href={video.link} target="_blank" rel="noreferrer">
+                    Open Video <FaArrowRight />
                   </a>
                 </article>
               ))}
@@ -1076,6 +1170,9 @@ function App() {
               </a>
               <a href="https://www.linkedin.com/in/traceurs-park" target="_blank" rel="noreferrer" aria-label="LinkedIn placeholder">
                 <FaLinkedinIn />
+              </a>
+              <a href="https://www.youtube.com/@TraceursPark" target="_blank" rel="noreferrer" aria-label="YouTube">
+                <FaYoutube />
               </a>
             </div>
           </article>
