@@ -2497,9 +2497,13 @@ main {
   }
 
   .our-works-left-stack {
+    display: grid;
+    grid-template-columns: minmax(92px, 108px) minmax(0, 1fr);
+    align-items: stretch;
     min-height: unset;
     order: 2;
-    width: min(100%, 210px);
+    width: 100%;
+    gap: 12px;
   }
 
   .our-works-right-big-wrap {
@@ -2510,23 +2514,26 @@ main {
 
   .our-works-left-thumb-wrap {
     width: 100%;
-    aspect-ratio: 1 / 1;
-    min-height: unset;
-    max-height: unset;
+    height: 100%;
+    aspect-ratio: auto;
+    min-height: 100%;
+    max-height: none;
     max-width: none;
   }
 
   .our-works-content {
-    padding: 16px;
+    padding: 12px 13px;
+    min-height: 100%;
   }
 
   .our-works-content h3 {
-    font-size: 1.06rem;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
   }
 
   .our-works-content p {
-    font-size: 0.9rem;
-    line-height: 1.52;
+    font-size: 0.8rem;
+    line-height: 1.42;
   }
 }
 
