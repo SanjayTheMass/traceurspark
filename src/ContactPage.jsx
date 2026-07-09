@@ -78,7 +78,7 @@ export default function ContactPage() {
                 <a href="https://www.linkedin.com/in/traceurs-park" target="_blank" rel="noreferrer" aria-label="LinkedIn" style={{ width: "40px", height: "40px", borderRadius: "50%", display: "inline-flex", alignItems: "center", justifyContent: "center", background: "#111", color: "#fff", textDecoration: "none" }}>
                   <FaLinkedinIn />
                 </a>
-                <a href="https://www.youtube.com/@traceurspark" target="_blank" rel="noreferrer" aria-label="YouTube" style={{ width: "40px", height: "40px", borderRadius: "50%", display: "inline-flex", alignItems: "center", justifyContent: "center", background: "#111", color: "#fff", textDecoration: "none" }}>
+                <a href="https://www.youtube.com/@TraceursPark" target="_blank" rel="noreferrer" aria-label="YouTube" style={{ width: "40px", height: "40px", borderRadius: "50%", display: "inline-flex", alignItems: "center", justifyContent: "center", background: "#111", color: "#fff", textDecoration: "none" }}>
                   <FaYoutube />
                 </a>
               </div>

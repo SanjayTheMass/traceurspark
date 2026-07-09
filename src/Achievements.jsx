@@ -1,25 +1,51 @@
 import { FaYoutube, FaArrowRight } from "react-icons/fa";
+import { useState } from "react";
 import freedomRunImg from "../imgs/achievements/freedom_run.jpeg";
 
 const videos = [
   {
-    title: "Legendary Parkour Motivation",
-    description: "Placeholder for a famous movement inspiration video.",
-    link: "https://www.youtube.com/"
+    title: "New World Record attempt🔥 6yrs Old Girl😇 Team Trichy Parkour🎉",
+    description: "New Record With Great Skills \nMs.Aaradhana(age 6) 1st standard, \nHas Finished her 2.5kms run \nwith blind fold and skipping😇 \nAm So Happy Ipdi Students ah ready pannadhula🎉 #trichyparkour",
+    link: "https://www.youtube.com/watch?v=-Ml8d7JyZYE"
   },
   {
-    title: "Important Safety and Technique",
-    description: "Placeholder for an important fundamentals tutorial.",
-    link: "https://www.youtube.com/"
+    title: "POV Parkour Chase on Public Park (TPK) 😎😎😎",
+    description: "Traceurs park Community Showcase\n Parkour chasing in Public park\n Early morning warm up chase..😂😂 \n#Team TPK😎\n#traceurspark\n",
+    link: "https://www.youtube.com/watch?v=ykMrhKRKbE8"
   },
   {
-    title: "Traceurs Community Showcase",
-    description: "Placeholder for your top training montage video.",
-    link: "https://www.youtube.com/"
+    title: "Team Tpk's Jumping Rope Fest - 2021 🏆",
+    description: "Team Tpk's Jumping Rope Fest - 2021 🏆🏆\nI've always believed that if you put in the work, the results will come....\nOne man cannot make a team.\n#trichyparkour #traceurspark #jumpingrope #ropechallenge",
+    link: "https://www.youtube.com/watch?v=v1XW8S2LjB0"
   }
 ];
 
+const getYouTubeVideoId = (url) => {
+  try {
+    const parsedUrl = new URL(url);
+
+    if (parsedUrl.hostname.includes("youtu.be")) {
+      return parsedUrl.pathname.slice(1);
+    }
+
+    if (parsedUrl.hostname.includes("youtube.com")) {
+      return parsedUrl.searchParams.get("v");
+    }
+
+    return null;
+  } catch {
+    return null;
+  }
+};
+
+const getYouTubeThumbnail = (url) => {
+  const videoId = getYouTubeVideoId(url);
+  return videoId ? `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg` : "";
+};
+
 export default function Achievements() {
+  const [hoveredVideoLink, setHoveredVideoLink] = useState(null);
+
   return (
     <>
     <section className="section">
@@ -95,14 +121,45 @@ export default function Achievements() {
         </div>
         <div className="videos-grid">
           {videos.map((video) => (
-            <article className="video-card" key={video.title}>
+            <article
+              className="video-card"
+              key={video.title}
+              onMouseEnter={() => setHoveredVideoLink(video.link)}
+              onMouseLeave={() => setHoveredVideoLink(null)}
+            >
               <div className="video-placeholder">
-                <FaYoutube />
+                {hoveredVideoLink === video.link && getYouTubeVideoId(video.link) ? (
+                  <iframe
+                    className="video-preview-frame"
+                    title={`${video.title} preview`}
+                    src={`https://www.youtube.com/embed/${getYouTubeVideoId(video.link)}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=${getYouTubeVideoId(video.link)}`}
+                    loading="lazy"
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                  />
+                ) : getYouTubeThumbnail(video.link) ? (
+                  <img
+                    src={getYouTubeThumbnail(video.link)}
+                    alt={`${video.title} thumbnail`}
+                    loading="lazy"
+                  />
+                ) : (
+                  <FaYoutube />
+                )}
+                <a
+                  className="video-tile-link"
+                  href={video.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Open ${video.title} on YouTube`}
+                >
+                  Open video
+                </a>
               </div>
               <h3>{video.title}</h3>
               <p>{video.description}</p>
-              <a href={video.link} target="_blank" rel="noreferrer">
-                Open Placeholder <FaArrowRight />
+              <a className="video-open-link" href={video.link} target="_blank" rel="noreferrer">
+                Open Video <FaArrowRight />
               </a>
             </article>
           ))}

@@ -229,6 +229,9 @@ main {
 
 .nav-links a {
   position: relative;
+  padding: 6px 12px;
+  border-radius: 999px;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 .nav-links a::after {
@@ -247,6 +250,15 @@ main {
 .nav-links a:hover::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+.nav-links a.is-active {
+  color: #fff;
+  background: var(--primary);
+}
+
+.nav-links a.is-active::after {
+  transform: scaleX(0);
 }
 
 .cta-btn,
@@ -1100,9 +1112,36 @@ main {
   border-radius: 12px;
   display: grid;
   place-items: center;
-  background: linear-gradient(120deg, #20140f, #512515);
+  position: relative;
+  overflow: hidden;
+  background: #080808;
   color: #f2f2f2;
   font-size: 2.3rem;
+}
+
+.video-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.video-preview-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  pointer-events: none;
+}
+
+.video-tile-link {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  color: transparent;
+  font-size: 0;
 }
 
 .video-card h3 {
@@ -1115,7 +1154,7 @@ main {
   line-height: 1.6;
 }
 
-.video-card a {
+.video-open-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1490,6 +1529,11 @@ main {
   .support-label {
     width: 100%;
     text-align: left;
+    font-size: 0.7rem;
+  }
+
+  .support-link {
+    font-size: 0.66rem;
   }
 
   .support-contact-grid {
@@ -1789,7 +1833,7 @@ main {
 
   .contact-actions {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
     align-items: stretch;
     justify-content: stretch;
     gap: 10px;
@@ -1797,7 +1841,8 @@ main {
 
   .contact-actions-stack {
     display: grid;
-    grid-template-rows: repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
     gap: 10px;
   }
 
@@ -1957,8 +2002,8 @@ main {
 }
 
 .timeline-2026 {
-  background: linear-gradient(135deg, rgba(79, 172, 254, 0.05), rgba(100, 149, 237, 0.05));
-  border-color: #4facfe;
+  background: linear-gradient(135deg, rgba(218, 5, 1, 0.06), rgba(255, 59, 54, 0.06));
+  border-color: var(--primary);
 }
 
 .timeline-card:hover {
@@ -1985,8 +2030,8 @@ main {
 }
 
 .timeline-2026 .timeline-year {
-  color: #4facfe;
-  background: rgba(79, 172, 254, 0.1);
+  color: var(--primary);
+  background: rgba(218, 5, 1, 0.12);
 }
 
 .timeline-card h3 {

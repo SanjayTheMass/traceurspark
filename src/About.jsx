@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight, FaInstagram } from "react-icons/fa";
 
 // Import trainer images
@@ -22,6 +22,12 @@ const trainers = [
 
 const TEAM_TILES_PER_SCROLL = 3;
 
+const aboutStats = [
+  { label: "Students Trained", target: 4000, suffix: "+" },
+  { label: "Years Experience", target: 14, suffix: "+" },
+  { label: "Safety Committed", target: 100, suffix: "%" }
+];
+
 function getVisibleTeamCards() {
   if (window.innerWidth <= 740) {
     return 1;
@@ -37,9 +43,21 @@ export default function About() {
   const [visibleTeamCards, setVisibleTeamCards] = useState(getVisibleTeamCards);
   const [teamOffsetPx, setTeamOffsetPx] = useState(0);
   const [teamTouchStartX, setTeamTouchStartX] = useState(null);
+  const [aboutStatsTick, setAboutStatsTick] = useState(0);
+  const [animatedAboutStats, setAnimatedAboutStats] = useState(
+    aboutStats.map(() => 0)
+  );
   const teamTrackRef = useRef(null);
+  const aboutStatsSectionRef = useRef(null);
+  const aboutStatsInViewRef = useRef(false);
 
   const maxTeamIndex = Math.max(0, trainers.length - visibleTeamCards);
+
+  const aboutStatsDisplay = aboutStats.map((stat, index) => {
+    const value = animatedAboutStats[index] ?? 0;
+    const displayValue = value.toLocaleString("en-IN");
+    return `${displayValue}${stat.suffix}`;
+  });
 
   const nextTeamPage = () => {
     if (teamIndex < maxTeamIndex) {
@@ -78,6 +96,56 @@ export default function About() {
     setTeamTouchStartX(null);
   };
 
+  useEffect(() => {
+    const section = aboutStatsSectionRef.current;
+
+    if (!section) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !aboutStatsInViewRef.current) {
+          aboutStatsInViewRef.current = true;
+          setAboutStatsTick((previous) => previous + 1);
+          return;
+        }
+
+        if (!entry.isIntersecting) {
+          aboutStatsInViewRef.current = false;
+        }
+      },
+      { threshold: 0.35 }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    setAnimatedAboutStats(aboutStats.map(() => 0));
+
+    const durationMs = 1700;
+    const startTime = performance.now();
+    let frameId = 0;
+
+    const animateCounters = (currentTime) => {
+      const progress = Math.min((currentTime - startTime) / durationMs, 1);
+      setAnimatedAboutStats(
+        aboutStats.map((stat) => Math.floor(stat.target * progress))
+      );
+
+      if (progress < 1) {
+        frameId = requestAnimationFrame(animateCounters);
+      }
+    };
+
+    frameId = requestAnimationFrame(animateCounters);
+
+    return () => cancelAnimationFrame(frameId);
+  }, [aboutStatsTick]);
+
   return (
     <><section className="about-hero">
       <div className="about-hero-placeholder"></div>
@@ -103,19 +171,13 @@ export default function About() {
       </section>
 
       {/* Stats Highlights */}
-      <section className="about-stats">
-        <div className="stat-highlight">
-          <h3>4,000+</h3>
-          <p>Students Trained</p>
-        </div>
-        <div className="stat-highlight">
-          <h3>14+</h3>
-          <p>Years Experience</p>
-        </div>
-        <div className="stat-highlight">
-          <h3>100%</h3>
-          <p>Safety Committed</p>
-        </div>
+      <section ref={aboutStatsSectionRef} className="about-stats">
+        {aboutStats.map((stat, index) => (
+          <div className="stat-highlight" key={stat.label}>
+            <h3>{aboutStatsDisplay[index]}</h3>
+            <p>{stat.label}</p>
+          </div>
+        ))}
       </section>
 
       {/* Story Sections */}
