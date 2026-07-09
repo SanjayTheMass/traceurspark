@@ -51,6 +51,24 @@ export default function About() {
   const aboutStatsSectionRef = useRef(null);
   const aboutStatsInViewRef = useRef(false);
 
+  // Scroll-triggered animations
+  useEffect(() => {
+    const elements = document.querySelectorAll('.fade-in-up');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   const maxTeamIndex = Math.max(0, trainers.length - visibleTeamCards);
 
   const aboutStatsDisplay = aboutStats.map((stat, index) => {
@@ -158,12 +176,12 @@ export default function About() {
     <div className="container">
       {/* Timeline Section */}
       <section className="about-timeline">
-        <div className="timeline-card timeline-2012">
+        <div className="timeline-card timeline-2012 fade-in-up">
           <div className="timeline-year">2012</div>
           <h3>The Beginning</h3>
           <p>Trichy Parkour founded with a vision to introduce movement to all ages</p>
         </div>
-        <div className="timeline-card timeline-2026">
+        <div className="timeline-card timeline-2026 fade-in-up" style={{ transitionDelay: '0.15s' }}>
           <div className="timeline-year">2026</div>
           <h3>New Era</h3>
           <p>Traceurs Park Movement Academy launches with purpose-built facilities</p>
@@ -173,7 +191,7 @@ export default function About() {
       {/* Stats Highlights */}
       <section ref={aboutStatsSectionRef} className="about-stats">
         {aboutStats.map((stat, index) => (
-          <div className="stat-highlight" key={stat.label}>
+          <div className="stat-highlight fade-in-up" key={stat.label} style={{ transitionDelay: `${index * 0.12}s` }}>
             <h3>{aboutStatsDisplay[index]}</h3>
             <p>{stat.label}</p>
           </div>
@@ -181,7 +199,7 @@ export default function About() {
       </section>
 
       {/* Story Sections */}
-      <section className="about-section">
+      <section className="about-section fade-in-up">
         <h2>Building Movement Since 2012</h2>
         <p>
           Founded in 2012, Trichy Parkour began with a simple vision to introduce the art of movement to people of all ages and backgrounds. What started as a small community of passionate practitioners has grown into one of the region's most trusted movement training organizations.
@@ -191,7 +209,7 @@ export default function About() {
         </p>
       </section>
 
-      <section className="about-section about-highlight-section">
+      <section className="about-section about-highlight-section fade-in-up" style={{ transitionDelay: '0.1s' }}>
         <h2>A New Chapter: Traceurs Park Movement Academy</h2>
         <div className="highlight-box">
           <p>
@@ -203,7 +221,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="about-section">
+      <section className="about-section fade-in-up">
         <h2>Our Journey</h2>
         <ul className="about-list about-journey-list">
           <li>
@@ -229,33 +247,33 @@ export default function About() {
         </ul>
       </section>
 
-      <section className="about-section about-philosophy">
+      <section className="about-section about-philosophy fade-in-up" style={{ transitionDelay: '0.1s' }}>
         <h2>Our Philosophy</h2>
         <p className="philosophy-tagline">We believe movement is for everyone.</p>
         <p>
           Whether your goal is to improve fitness, learn parkour, develop athletic performance, overcome physical challenges, or pursue movement professionally, our programs are designed to help you progress safely and confidently.
         </p>
         <div className="philosophy-pillars">
-          <div className="pillar">
+          <div className="pillar fade-in-up" style={{ transitionDelay: '0.1s' }}>
             <h4>Safety First</h4>
             <p>Expert coaching with professional safety protocols</p>
           </div>
-          <div className="pillar">
+          <div className="pillar fade-in-up" style={{ transitionDelay: '0.2s' }}>
             <h4>Progressive</h4>
             <p>Structured skill development at your own pace</p>
           </div>
-          <div className="pillar">
+          <div className="pillar fade-in-up" style={{ transitionDelay: '0.3s' }}>
             <h4>Functional</h4>
             <p>Strength, mobility and real-world movement</p>
           </div>
-          <div className="pillar">
+          <div className="pillar fade-in-up" style={{ transitionDelay: '0.4s' }}>
             <h4>Community</h4>
             <p>Respect, discipline and belonging</p>
           </div>
         </div>
       </section>
 
-      <section className="about-section">
+      <section className="about-section fade-in-up">
         <h2>Looking Ahead</h2>
         <p>
           As we evolve into Traceurs Park Movement Academy, our mission remains the same: to inspire people to move better, think stronger, and grow through movement.

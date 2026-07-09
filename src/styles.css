@@ -252,6 +252,11 @@ main {
   transform-origin: left;
 }
 
+.nav-links a:hover:not(.is-active) {
+  background-color: rgba(218, 5, 1, 0.08);
+  color: var(--primary);
+}
+
 .nav-links a.is-active {
   color: #fff;
   background: var(--primary);
@@ -1120,6 +1125,8 @@ main {
 }
 
 .video-placeholder img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1140,8 +1147,29 @@ main {
   position: absolute;
   inset: 0;
   z-index: 2;
-  color: transparent;
-  font-size: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.video-tile-link .play-icon {
+  font-size: 3rem;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: scale(0.8);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+}
+
+.video-tile-link:hover {
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.video-tile-link:hover .play-icon {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .video-card h3 {
@@ -1515,36 +1543,34 @@ main {
 
 @media (max-width: 740px) {
   :root {
-    --support-bar-h: 54px;
+    --support-bar-h: 30px;
     --topbar-h: 56px;
     --newsletter-bar-h: 30px;
   }
 
   .support-links {
-    align-items: flex-start;
-    flex-wrap: wrap;
+    align-items: center;
+    flex-wrap: nowrap;
     gap: 6px;
   }
 
   .support-label {
-    width: 100%;
-    text-align: left;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .support-link {
-    font-size: 0.66rem;
+    font-size: 0.58rem;
   }
 
   .support-contact-grid {
-    width: 100%;
-    gap: 8px;
-    flex-wrap: wrap;
+    gap: 6px;
+    flex-wrap: nowrap;
   }
 
   .support-email {
-    text-align: left;
-    margin-left: 0;
+    text-align: right;
   }
 
   .newsletter-item {
@@ -1740,8 +1766,8 @@ main {
   }
 
   .videos-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
 
   .video-card {
@@ -1852,10 +1878,6 @@ main {
     min-height: 40px;
     padding: 6px 8px;
     font-size: 0.66rem;
-  }
-
-  .contact-actions-stack .contact-subscribe-btn {
-    display: none;
   }
 
   .contact-mini-map {
@@ -2041,6 +2063,10 @@ main {
   font-weight: 700;
 }
 
+.timeline-2026 h3 {
+  color: var(--primary);
+}
+
 .timeline-card p {
   font-size: 0.95rem;
   color: #5e5e5e;
@@ -2095,12 +2121,23 @@ main {
   letter-spacing: 0.5px;
 }
 
+/* Scroll-triggered fade-in animation */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* About Sections */
 .about-section {
   margin: 56px 0;
   padding: 40px 0;
   border-bottom: 2px solid #e8e8e8;
-  animation: fadeInUp 0.8s ease-out;
 }
 
 @keyframes fadeInUp {

@@ -1005,7 +1005,7 @@ function App() {
                       rel="noreferrer"
                       aria-label={`Open ${video.title} on YouTube`}
                     >
-                      Open video
+                      <FaYoutube className="play-icon" />
                     </a>
                   </div>
                   <h3>{video.title}</h3>
