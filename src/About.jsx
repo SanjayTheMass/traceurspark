@@ -7,20 +7,18 @@ import trainerWomen from "../imgs/trainers/Women-trainer.jpeg";
 import trainerBody from "../imgs/trainers/Body Building Trainer.jpeg";
 import trainerAnimalFlow from "../imgs/trainers/Animal Flow Trainer.jpeg";
 import trainerNunchucks from "../imgs/trainers/Nunchucks-trainer.jpeg";
-import aboutUsBanner from "../imgs/about-us/AboutUsBanner.jpg.jpeg";
-import tpkLogo from "../imgs/about-us/tpk_logo.jpeg";
-import newEraLogo from "../imgs/about-us/new_era_logo.png";
 
 const trainers = [
   { name: "Mohamed Imran Shajahan", focus: "Founder & Master Coach", intro: "Chief Trainer: Advanced Parkour Training and Coaching", instagram: "https://www.instagram.com/imran_parkour" ,image: trainerChief },
   { name: "Muthu Kumaran S", focus: "Relationship Manager", intro: "Managing relationships and ensuring client satisfaction", instagram: "https://www.instagram.com/mk_muthuu" ,image: null },  
-  { name: "Vignesh", focus: "Body Building Trainer", intro: "Power, Endurance and Conditioning focused body building training forged for individuals based on their needs", instagram: "https://www.instagram.com/_theprabhu__", image: trainerBody },
-  { name: "Karnesh", focus: "Animal Flow Trainer", intro: "Mobility, Ground Flow and Agility. Master natural movement through animal-inspired body flow training", instagram: "https://www.instagram.com/tn_45_mt_rider_", image: trainerAnimalFlow },
-  { name: "M.A. Gokul", focus: "Freestyle Nunchucks Trainer", intro: "Unlock the art of nunchucks with skill, discipline, and flow. Train smarter. Strike faster. Move sharper", instagram: "https://www.instagram.com/arul_venkatesh", image: trainerNunchucks },
-  { name: "Mohammed Suhail", focus: "Calisthenics Trainer", intro: "Your body is the gym. Let's make it unstoppable. Progressive bodyweight training for real-world strength", instagram: "https://www.instagram.com/iam_suhail__", image: null },
-  { name: "Tharani Murali", focus: "Women Trainer", intro: "Strength and Inclusive Movement exclusive for women", instagram: "https://www.instagram.com/thara_sdiaryy", image: trainerWomen },
-  { name: "Mohammed Wasim Shajahan", focus: "Technical Manager", intro: "Overseeing technical operations and ensuring smooth workflow", instagram: "https://www.instagram.com/mr.mohamedwasim" ,image: null },
-  { name: "Arun", focus: "Parkour Trainer", intro: "Parkour Training and Coaching", instagram: "https://www.instagram.com/devil_of_parkour" ,image: null },
+  { name: "Jamal", focus: "Combat Sports Instructor", intro: "Building confidence, fitness and endurance through combat sports", instagram: "https://www.instagram.com/_theprabhu__", image: trainerBody },
+  { name: "Tharani Murali", focus: "Women's wellness and Fitness Instructor", intro: "Strength and Inclusive Movement exclusive for women", instagram: "https://www.instagram.com/thara_sdiaryy", image: trainerWomen },
+  { name: "Vignesh", focus: "Fitness Trainer", intro: "Power, Endurance and Conditioning focused body building training forged for individuals based on their needs", instagram: "https://www.instagram.com/_theprabhu__", image: trainerBody },
+   { name: "S.A.Karnesh", focus: "Primal Movement Trainer", intro: "Mobility, Ground Flow and Agility. Master natural movement through animal-inspired body flow training", instagram: "https://www.instagram.com/tn_45_mt_rider_", image: trainerAnimalFlow },
+  { name: "M.A. Gokul", focus: "Traditional Weapon's Instructor", intro: "Unlock the art of traditional Weapons with skill, discipline, and flow. Train smarter. Strike faster. Move sharper", instagram: "https://www.instagram.com/arul_venkatesh", image: trainerNunchucks },
+  { name: "Mohammed Suhail", focus: "Calisthenics Instructor", intro: "Your body is the gym. Let's make it unstoppable. Progressive bodyweight training for real-world strength", instagram: "https://www.instagram.com/iam_suhail__", image: null },
+  { name: "Mohammed Wasim Akram S", focus: "Brand And Creative Manager ", intro: "Overseeing technical operations and ensuring smooth workflow", instagram: "https://www.instagram.com/mr.mohamedwasim" ,image: null },
+  
 ];
 
 const TEAM_TILES_PER_SCROLL = 3;
@@ -30,19 +28,6 @@ const aboutStats = [
   { label: "Years Experience", target: 14, suffix: "+" },
   { label: "Safety Committed", target: 100, suffix: "%" }
 ];
-
-const founder = {
-  name: "Mohamed Imran Shajahan",
-  role: "Founder & Master Coach",
-  image: trainerChief,
-  bio: [
-    "Founder of Trichy Parkour (2012) | Founder & Head Coach - Traceurs Park | The Movement Academy Parkour Coach | Movement Educator | Martial Arts & Functional Fitness Trainer",
-    "Mohamed Imran Shajahan is a pioneering parkour coach and movement educator from Tiruchirappalli, Tamil Nadu. In 2012, he founded Trichy Parkour, becoming one of the early pioneers dedicated to introducing and developing parkour in the region. With over 14 years of coaching experience, he has played a key role in building a strong movement community and promoting safe, structured parkour training.",
-    "As the Founder & Head Coach of Traceurs Park - The Movement Academy, Imran has trained more than 4,000 students, helping children, youth, adults, athletes, and fitness enthusiasts develop strength, agility, confidence, discipline, and resilience through movement.",
-    "His coaching philosophy integrates parkour fundamentals with functional fitness, natural movement, bodyweight strength, mobility, and martial arts, enabling students to build complete physical capability and mental confidence.",
-    "Through workshops, demonstrations, school programs, and community initiatives, Imran continues to inspire people to embrace movement as a lifelong practice. His mission is to elevate the standard of parkour in India by creating a safe, inclusive, and professional environment where individuals can unlock their full potential."
-  ]
-};
 
 function getVisibleTeamCards() {
   if (window.innerWidth <= 740) {
@@ -182,7 +167,6 @@ export default function About() {
 
   return (
     <><section className="about-hero">
-      <img className="about-hero-image" src={aboutUsBanner} alt="Traceurs Park academy banner" />
       <div className="about-hero-placeholder"></div>
       <div className="about-hero-overlay">
         <h1>About Traceurs Park</h1>
@@ -191,30 +175,14 @@ export default function About() {
     </section>
 
     <div className="container">
-      <section className="about-founder fade-in-up" aria-label="Founder information">
-        <div className="about-founder-media">
-          <img src={founder.image} alt={`${founder.name} portrait`} />
-        </div>
-        <div className="about-founder-content">
-          <p className="about-founder-tag">Founder Spotlight</p>
-          <h2>{founder.name}</h2>
-          <h3>{founder.role}</h3>
-          {founder.bio.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
-      </section>
-
       {/* Timeline Section */}
       <section className="about-timeline">
         <div className="timeline-card timeline-2012 fade-in-up">
-          <img className="timeline-logo" src={tpkLogo} alt="TPK logo" />
           <div className="timeline-year">2012</div>
           <h3>The Beginning</h3>
           <p>Trichy Parkour founded with a vision to introduce movement to all ages</p>
         </div>
         <div className="timeline-card timeline-2026 fade-in-up" style={{ transitionDelay: '0.15s' }}>
-          <img className="timeline-logo" src={newEraLogo} alt="Traceurs Park new era logo" />
           <div className="timeline-year">2026</div>
           <h3>New Era</h3>
           <p>Traceurs Park Movement Academy launches with purpose-built facilities</p>
@@ -364,8 +332,8 @@ export default function About() {
                     </div>
                   </div>
                   <div className="trainer-body">
-                    <h2>{trainer.name}</h2>
-                    <p className="trainer-focus">{trainer.focus}</p>
+                    <h3>{trainer.name}</h3>
+                    <p><b>{trainer.focus}</b></p>
                     <p>{trainer.intro}</p>
                   </div>
                 </article>

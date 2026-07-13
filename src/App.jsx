@@ -58,6 +58,11 @@ import partnerFitIndia from "../imgs/client-logos/fitindia.png";
 import partnerWisdom from "../imgs/client-logos/wisdom.png";
 
 import testimonialImg from "../imgs/testimonials/chinnappan.jpeg";
+import testimonialImg1 from "../imgs/testimonials/Arun Kumar.jpeg";
+import testimonialImg2 from "../imgs/testimonials/Nivetha.S.jpeg";
+import testimonialImg3 from "../imgs/testimonials/Parent.jpeg";
+import testimonialImg4 from "../imgs/testimonials/NIT.jfif.jpeg";
+
 import testimonialsBg from "../imgs/testimonials-bg.jpeg";
 
 const services = [
@@ -73,15 +78,16 @@ const services = [
 ];
 
 const trainers = [
-  { name: "Mohamed Imran Shajahan", focus: "Founder & Master Coach", intro: "Chief Trainer: Advanced Parkour Training and Coaching", instagram: "https://www.instagram.com/imran_parkour" ,image: trainerChief },
+ { name: "Mohamed Imran Shajahan", focus: "Founder & Master Coach", intro: "Chief Trainer: Advanced Parkour Training and Coaching", instagram: "https://www.instagram.com/imran_parkour" ,image: trainerChief },
   { name: "Muthu Kumaran S", focus: "Relationship Manager", intro: "Managing relationships and ensuring client satisfaction", instagram: "https://www.instagram.com/mk_muthuu" ,image: null },  
-  { name: "Vignesh", focus: "Body Building Trainer", intro: "Power, Endurance and Conditioning focused body building training forged for individuals based on their needs", instagram: "https://www.instagram.com/_theprabhu__", image: trainerBody },
-  { name: "Karnesh", focus: "Animal Flow Trainer", intro: "Mobility, Ground Flow and Agility. Master natural movement through animal-inspired body flow training", instagram: "https://www.instagram.com/tn_45_mt_rider_", image: trainerAnimalFlow },
-  { name: "M.A. Gokul", focus: "Freestyle Nunchucks Trainer", intro: "Unlock the art of nunchucks with skill, discipline, and flow. Train smarter. Strike faster. Move sharper", instagram: "https://www.instagram.com/arul_venkatesh", image: trainerNunchucks },
-  { name: "Mohammed Suhail", focus: "Calisthenics Trainer", intro: "Your body is the gym. Let's make it unstoppable. Progressive bodyweight training for real-world strength", instagram: "https://www.instagram.com/iam_suhail__", image: null },
-  { name: "Tharani Murali", focus: "Women Trainer", intro: "Strength and Inclusive Movement exclusive for women", instagram: "https://www.instagram.com/thara_sdiaryy", image: trainerWomen },
-  { name: "Mohammed Wasim Shajahan", focus: "Technical Manager", intro: "Overseeing technical operations and ensuring smooth workflow", instagram: "https://www.instagram.com/mr.mohamedwasim" ,image: null },
-  { name: "Arun", focus: "Parkour Trainer", intro: "Parkour Training and Coaching", instagram: "https://www.instagram.com/devil_of_parkour" ,image: null },
+  { name: "Jamal", focus: "Combat Sports Instructor", intro: "Building confidence, fitness and endurance through combat sports", instagram: "https://www.instagram.com/_theprabhu__", image: trainerBody },
+  { name: "Tharani Murali", focus: "Women's wellness and Fitness Instructor", intro: "Strength and Inclusive Movement exclusive for women", instagram: "https://www.instagram.com/thara_sdiaryy", image: trainerWomen },
+  { name: "Vignesh", focus: "Fitness Trainer", intro: "Power, Endurance and Conditioning focused body building training forged for individuals based on their needs", instagram: "https://www.instagram.com/_theprabhu__", image: trainerBody },
+   { name: "S.A.Karnesh", focus: "Primal Movement Trainer", intro: "Mobility, Ground Flow and Agility. Master natural movement through animal-inspired body flow training", instagram: "https://www.instagram.com/tn_45_mt_rider_", image: trainerAnimalFlow },
+  { name: "M.A. Gokul", focus: "Traditional Weapon's Instructor", intro: "Unlock the art of traditional Weapons with skill, discipline, and flow. Train smarter. Strike faster. Move sharper", instagram: "https://www.instagram.com/arul_venkatesh", image: trainerNunchucks },
+  { name: "Mohammed Suhail", focus: "Calisthenics Instructor", intro: "Your body is the gym. Let's make it unstoppable. Progressive bodyweight training for real-world strength", instagram: "https://www.instagram.com/iam_suhail__", image: null },
+  { name: "Mohammed Wasim Akram S", focus: "Brand And Creative Manager ", intro: "Overseeing technical operations and ensuring smooth workflow", instagram: "https://www.instagram.com/mr.mohamedwasim" ,image: null },
+  
 ];
 
 const stats = [
@@ -133,48 +139,48 @@ const testimonials = [
   },
   {
     id: 2,
-    name: "Testimonial Placeholder 2",
-    role: "Member",
-    quote: "Share your movement journey and transformation story here.",
-    image: null
+    name: "Member's Parent",
+    role: "parent",
+    quote: " My kid is more confident and active since joining TraceursPark.",
+    image: testimonialImg3
   },
   {
     id: 3,
-    name: "Testimonial Placeholder 3",
-    role: "Athlete",
-    quote: "Share your experience with trainers, facilities, and support.",
-    image: null
+    name: "NIT Faculty",
+    role: "Workshops Benefactor",
+    quote: "The workshop was well-organised, engaging, and professionally conducted. Students and even Faculties actively participated and learnt a lot.",
+        image: testimonialImg4
   },
   {
     id: 4,
-    name: "Testimonial Placeholder 4",
-    role: "Student",
-    quote: "Share your progress journey and your favorite part of training.",
-    image: null
+    name: "Arun Kumar",
+    role: " CollegeStudent",
+    quote: "The Training is fun, challengingand rewarding. I have gained improvement in my fitness and confidence in just few weeks.",
+    image: testimonialImg1
   },
   {
     id: 5,
-    name: "Testimonial Placeholder 5",
-    role: "Fitness Enthusiast",
-    quote: "Share your transformation in strength, confidence, and movement quality.",
-    image: null
+    name: "Nivetha.S",
+    role: "School Student",
+    quote: "Starting la konjam bayama irunchu but ipo confidence and bayam suthama ila because of Imran Master thanks to him.",
+    image: testimonialImg2
   }
 ];
 
 const videos = [
   {
-    title: "New World Record by 6yrs Old Girl from Team Trichy Parkour",
-    description: "New Record With Great Skills \nMs.Aaradhana(age 6) 1st standard, \nHas Finished her 2.5kms run with blind fold and skipping \nWe are so proud to train her! #trichyparkour",
+    title: "New World Record attempt🔥 6yrs Old Girl😇 Team Trichy Parkour🎉",
+    description: "New Record With Great Skills \nMs.Aaradhana(age 6) 1st standard, \nHas Finished her 2.5kms run \nwith blind fold and skipping😇 \nAm So Happy Ipdi Students ah ready pannadhula🎉 #trichyparkour",
     link: "https://www.youtube.com/watch?v=-Ml8d7JyZYE"
   },
   {
-    title: "POV Parkour Chase on Public Park (TPK)",
-    description: "Traceurs park Community Showcase\n Parkour chasing in Public park\n Early morning warm up chase..\n#Team TPK\n#traceurspark\n",
+    title: "POV Parkour Chase on Public Park (TPK) 😎😎😎",
+    description: "Traceurs park Community Showcase\n Parkour chasing in Public park\n Early morning warm up chase..😂😂 \n#Team TPK😎\n#traceurspark\n",
     link: "https://www.youtube.com/watch?v=ykMrhKRKbE8"
   },
   {
-    title: "Team Tpk's Jumping Rope Fest - 2021",
-    description: "Team Tpk's Jumping Rope Fest - 2021\nWe've always believed that if you put in the work, the results will come....\n#trichyparkour #traceurspark #jumpingrope #ropechallenge",
+    title: "Team Tpk's Jumping Rope Fest - 2021 🏆",
+    description: "Team Tpk's Jumping Rope Fest - 2021 🏆🏆\nI've always believed that if you put in the work, the results will come....\nOne man cannot make a team.\n#trichyparkour #traceurspark #jumpingrope #ropechallenge",
     link: "https://www.youtube.com/watch?v=v1XW8S2LjB0"
   }
 ];
@@ -217,7 +223,6 @@ const subscribeMailto =
 const newsletterItems = [
   "Take the First Step Toward a Stronger Lifestyle with TraceursPark - Trial Class @ ₹149",
   "Avail Daily passes @ ₹449 !!!",
-  "We are Hiring: Join Our Team of Passionate Trainers and Staff - Apply Now!",
   "Enjoy group sessions pass upto 10 members @ ₹1299 !!!"
 ];
 
@@ -690,7 +695,7 @@ function App() {
       </header>
 
       <main className="main-content">
-        {currentPage === 'home' && (<div className="home-page"><section className="hero" id="home">
+        {currentPage === 'home' && (<><section className="hero" id="home">
           <div
             className="hero-carousel"
             aria-label="Auto scrolling banner with three images"
@@ -717,7 +722,7 @@ function App() {
                       {/* Mobile: WhatsApp */}
                       <a
                         className="cta-btn hero-cta-mobile"
-                        href="https://wa.me/919363503310?text=More%20Information%20about%20Traceurs%20Park%20%5Bwith%20spark%5D"
+                        href="https://wa.me/919363503310?text=More%20Information%20about%20Traceurs%20Park"
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -792,16 +797,6 @@ function App() {
                 </article>
               ))}
             </div>
-            <div className="services-enroll-wrap">
-              <a
-                className="cta-btn services-enroll-btn"
-                href="https://wa.me/919363503310?text=I%20want%20to%20enroll%20at%20Traceurs%20Park%20%5Bwith%20spark%5D"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Enroll Now
-              </a>
-            </div>
           </div>
         </section>
 
@@ -872,8 +867,8 @@ function App() {
                         </div>
                       </div>
                       <div className="trainer-body">
-                        <h2>{trainer.name}</h2>
-                        <p className="trainer-focus">{trainer.focus}</p>
+                        <h3>{trainer.name}</h3>
+                        <p><b>{trainer.focus}</b></p>
                         <p>{trainer.intro}</p>
                       </div>
                     </article>
@@ -1049,7 +1044,7 @@ function App() {
           </div>
         </section>
 
-        </div>)}
+        </>)}
 
         {currentPage === 'about' && <About />}
         {currentPage === 'achievements' && <Achievements />}
@@ -1094,7 +1089,7 @@ function App() {
                   {/* Mobile only: WhatsApp */}
                   <a
                     className="cta-btn hero-cta-mobile"
-                    href="https://wa.me/919363503310?text=More%20Information%20about%20Traceurs%20Park%20%5Bwith%20spark%5D"
+                    href="https://wa.me/919363503310?text=More%20Information%20about%20Traceurs%20Park"
                     target="_blank"
                     rel="noreferrer"
                   >
