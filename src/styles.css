@@ -1,6 +1,8 @@
 :root {
   --bg: #faf8f3;
   --surface: #ffffff;
+  --heading-font: "Bebas Neue", sans-serif;
+  --body-font: "Manrope", sans-serif;
   --ink: #111111;
   --muted: #5e5e5e;
   --primary: #da0501;
@@ -27,9 +29,32 @@ body,
 }
 
 body {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--body-font);
   color: var(--ink);
   background: radial-gradient(circle at 80% 0%, #ffe1cf 0%, var(--bg) 38%), var(--bg);
+}
+
+.home-page {
+  font-family: var(--body-font);
+}
+
+.home-page h1,
+.home-page h2,
+.home-page h3,
+.home-page h4,
+.home-page h5,
+.home-page h6 {
+  font-family: var(--heading-font);
+}
+
+.home-page p,
+.home-page li,
+.home-page a,
+.home-page span,
+.home-page button,
+.home-page input,
+.home-page textarea {
+  font-family: var(--body-font);
 }
 
 a {
@@ -210,7 +235,7 @@ main {
 }
 
 .brand span {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--heading-font);
   font-size: 1.45rem;
   letter-spacing: 0.8px;
 }
@@ -918,11 +943,21 @@ main {
   gap: 18px;
 }
 
+.services-enroll-wrap {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+}
+
+.services-enroll-btn {
+  min-width: 170px;
+}
+
 .services-main-title {
   margin: 8px 0 0;
   font-size: clamp(2.9rem, 6vw, 5rem);
   line-height: 0.96;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--heading-font);
   letter-spacing: 1px;
   text-align: center;
 }
@@ -982,7 +1017,7 @@ main {
 }
 
 .service-card-back h3 {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--heading-font);
   font-size: clamp(1.4rem, 2.5vw, 2rem);
   letter-spacing: 1px;
   color: var(--accent);
@@ -1034,7 +1069,7 @@ main {
 .section-head .achievements-main-title {
   font-size: clamp(2.3rem, 4.8vw, 3.8rem);
   line-height: 1.03;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--heading-font);
   letter-spacing: 1px;
   margin: 0;
   text-align: center;
@@ -1052,7 +1087,7 @@ main {
   margin: 0;
   font-size: clamp(2.3rem, 4.8vw, 3.8rem);
   line-height: 1.03;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--heading-font);
   letter-spacing: 1px;
   text-align: center;
 }
@@ -1104,7 +1139,7 @@ main {
 
 .stat-loader h3 {
   margin: 0;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--heading-font);
   font-size: 1.8rem;
   position: relative;
   z-index: 1;
@@ -1226,9 +1261,22 @@ main {
   padding: 15px;
 }
 
+.trainer-body h2,
 .trainer-body h3 {
   margin: 0;
   font-size: 1.3rem;
+  font-family: var(--heading-font);
+}
+
+.trainer-focus {
+  margin: 7px 0 0;
+  font-size: 1rem;
+  color: #1f1f1f;
+  font-family: var(--heading-font);
+}
+
+.home-page .trainer-focus {
+  font-family: var(--heading-font);
 }
 
 .trainer-body p {
@@ -2549,11 +2597,21 @@ main {
   justify-content: center;
 }
 
+.about-hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
 .about-hero-placeholder {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #e74b2f 0%, #ff6b42 50%, #ff8c69 100%);
-  opacity: 0.9;
+  background: linear-gradient(130deg, rgba(8, 8, 8, 0.48), rgba(8, 8, 8, 0.28));
+  opacity: 1;
   animation: heroGradientShift 6s ease-in-out infinite;
 }
 
@@ -2603,6 +2661,75 @@ main {
   letter-spacing: 0.5px;
 }
 
+/* Founder Section */
+.about-founder {
+  margin: 70px 0 18px;
+  display: grid;
+  grid-template-columns: minmax(220px, 340px) minmax(0, 1fr);
+  gap: 34px;
+  align-items: stretch;
+  padding: 22px;
+  border-radius: 20px;
+  background: linear-gradient(120deg, #ffffff, #f8f2e8);
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  box-shadow: 0 18px 36px rgba(17, 17, 17, 0.12);
+}
+
+.about-founder-media {
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 100%;
+  background: #111;
+}
+
+.about-founder-media img {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.about-founder-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-founder-tag {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.about-founder-content h2 {
+  margin: 8px 0 0;
+  font-family: var(--heading-font);
+  font-size: clamp(2rem, 4.2vw, 3.4rem);
+  letter-spacing: 1px;
+  line-height: 0.95;
+  color: #111;
+}
+
+.about-founder-content h3 {
+  margin: 10px 0 0;
+  font-family: var(--heading-font);
+  font-size: clamp(1.05rem, 2vw, 1.5rem);
+  color: var(--accent);
+  letter-spacing: 0.5px;
+}
+
+.about-founder-content p {
+  margin: 12px 0 0;
+  color: #343434;
+  line-height: 1.72;
+  font-size: 0.98rem;
+}
+
 /* Timeline Section */
 .about-timeline {
   display: grid;
@@ -2621,6 +2748,19 @@ main {
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   background: #fff;
+}
+
+.timeline-logo {
+  width: 76px;
+  height: 76px;
+  border-radius: 14px;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  margin: 0 auto 12px;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(17, 17, 17, 0.09);
+  padding: 8px;
 }
 
 .timeline-2012 {
@@ -2947,6 +3087,16 @@ main {
 
 /* Mobile Responsive */
 @media (max-width: 1060px) {
+  .about-founder {
+    grid-template-columns: minmax(200px, 280px) minmax(0, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+
+  .about-founder-media img {
+    min-height: 350px;
+  }
+
   .philosophy-pillars {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2963,6 +3113,36 @@ main {
 }
 
 @media (max-width: 740px) {
+  .about-founder {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin: 36px 0 8px;
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .about-founder-media {
+    border-radius: 12px;
+  }
+
+  .about-founder-media img {
+    min-height: 280px;
+    max-height: 300px;
+  }
+
+  .about-founder-content h2 {
+    font-size: clamp(1.45rem, 8vw, 2.1rem);
+  }
+
+  .about-founder-content h3 {
+    font-size: 1rem;
+  }
+
+  .about-founder-content p {
+    font-size: 0.9rem;
+    line-height: 1.62;
+  }
+
   .about-timeline {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
@@ -2971,6 +3151,14 @@ main {
 
   .timeline-card {
     padding: 20px 14px;
+  }
+
+  .timeline-logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    padding: 6px;
   }
 
   .timeline-year {

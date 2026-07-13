@@ -4,18 +4,18 @@ import freedomRunImg from "../imgs/achievements/freedom_run.jpeg";
 
 const videos = [
   {
-    title: "New World Record attempt🔥 6yrs Old Girl😇 Team Trichy Parkour🎉",
-    description: "New Record With Great Skills \nMs.Aaradhana(age 6) 1st standard, \nHas Finished her 2.5kms run \nwith blind fold and skipping😇 \nAm So Happy Ipdi Students ah ready pannadhula🎉 #trichyparkour",
+    title: "New World Record by 6yrs Old Girl from Team Trichy Parkour",
+    description: "New Record With Great Skills \nMs.Aaradhana(age 6) 1st standard, \nHas Finished her 2.5kms run with blind fold and skipping \nWe are so proud to train her! #trichyparkour",
     link: "https://www.youtube.com/watch?v=-Ml8d7JyZYE"
   },
   {
-    title: "POV Parkour Chase on Public Park (TPK) 😎😎😎",
-    description: "Traceurs park Community Showcase\n Parkour chasing in Public park\n Early morning warm up chase..😂😂 \n#Team TPK😎\n#traceurspark\n",
+    title: "POV Parkour Chase on Public Park (TPK)",
+    description: "Traceurs park Community Showcase\n Parkour chasing in Public park\n Early morning warm up chase..\n#Team TPK\n#traceurspark\n",
     link: "https://www.youtube.com/watch?v=ykMrhKRKbE8"
   },
   {
-    title: "Team Tpk's Jumping Rope Fest - 2021 🏆",
-    description: "Team Tpk's Jumping Rope Fest - 2021 🏆🏆\nI've always believed that if you put in the work, the results will come....\nOne man cannot make a team.\n#trichyparkour #traceurspark #jumpingrope #ropechallenge",
+    title: "Team Tpk's Jumping Rope Fest - 2021",
+    description: "Team Tpk's Jumping Rope Fest - 2021\nWe've always believed that if you put in the work, the results will come....\n#trichyparkour #traceurspark #jumpingrope #ropechallenge",
     link: "https://www.youtube.com/watch?v=v1XW8S2LjB0"
   }
 ];

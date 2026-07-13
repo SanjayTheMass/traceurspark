@@ -33,7 +33,7 @@ export default function Career() {
             <h3>Interested in Joining?</h3>
             <p>Send us your resume and a brief introduction to traceurspark@gmail.com or contact us via WhatsApp.</p>
             <div style={{ marginTop: "20px", display: "flex", justifyContent: "center", gap: "12px", flexWrap: "wrap" }}>
-              <a href="https://wa.me/919363503310?text=I%20am%20interested%20in%20joining%20Traceurs%20Park" 
+              <a href="https://wa.me/919363503310?text=I%20am%20interested%20in%20joining%20Traceurs%20Park%20%5Bwith%20spark%5D" 
                 target="_blank" 
                 rel="noreferrer"
                 style={{ 

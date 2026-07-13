@@ -23,7 +23,7 @@ export default function ContactPage() {
             <div className="contact-info" style={{ padding: "30px", background: "#f5f5f5", borderRadius: "10px" }}>
               <h3 style={{ color: "var(--primary)", marginBottom: "15px" }}>💬 WhatsApp</h3>
               <p>
-                <a href="https://wa.me/919363503310" target="_blank" rel="noreferrer" style={{ color: "#333", textDecoration: "none", fontWeight: "bold" }}>
+                <a href="https://wa.me/919363503310?text=Hello%20Traceurs%20Park%20%5Bwith%20spark%5D" target="_blank" rel="noreferrer" style={{ color: "#333", textDecoration: "none", fontWeight: "bold" }}>
                   Message us directly
                 </a>
               </p>
@@ -90,7 +90,7 @@ export default function ContactPage() {
             <p style={{ marginBottom: "30px", color: "#666" }}>
               Join thousands of students who have transformed their bodies and minds through movement training.
             </p>
-            <a href="https://wa.me/919363503310?text=More%20Information%20about%20Traceurs%20Park" 
+            <a href="https://wa.me/919363503310?text=More%20Information%20about%20Traceurs%20Park%20%5Bwith%20spark%5D" 
               target="_blank" 
               rel="noreferrer"
               style={{ 

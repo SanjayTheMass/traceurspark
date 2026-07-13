@@ -156,7 +156,7 @@ export default function OtherServices() {
             <h3>Have a Custom Request?</h3>
             <p>We can create tailored programs for your specific needs. Contact us to discuss your requirements!</p>
             <p style={{ marginTop: "20px" }}>
-              <a href="https://wa.me/919363503310?text=I%20have%20a%20custom%20service%20inquiry" 
+              <a href="https://wa.me/919363503310?text=I%20have%20a%20custom%20service%20inquiry%20%5Bwith%20spark%5D" 
                 target="_blank" 
                 rel="noreferrer"
                 style={{ 
