@@ -3118,6 +3118,13 @@ main {
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
     border-radius: 0;
+    background: #000;
+    height: clamp(220px, 42vh, 320px);
+  }
+
+  .about-hero-image {
+    object-fit: contain;
+    object-position: center;
   }
 
   .about-founder {
