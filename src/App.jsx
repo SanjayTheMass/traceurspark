@@ -223,6 +223,7 @@ const subscribeMailto =
 const newsletterItems = [
   "Take the First Step Toward a Stronger Lifestyle with TraceursPark - Trial Class @ ₹149",
   "Avail Daily passes @ ₹449 !!!",
+  "We are Hiring: Join Our Team of Passionate Trainers and Staff - Apply Now!",
   "Enjoy group sessions pass upto 10 members @ ₹1299 !!!"
 ];
 
@@ -695,7 +696,7 @@ function App() {
       </header>
 
       <main className="main-content">
-        {currentPage === 'home' && (<><section className="hero" id="home">
+        {currentPage === 'home' && (<div className="home-page"><section className="hero" id="home">
           <div
             className="hero-carousel"
             aria-label="Auto scrolling banner with three images"
@@ -722,7 +723,7 @@ function App() {
                       {/* Mobile: WhatsApp */}
                       <a
                         className="cta-btn hero-cta-mobile"
-                        href="https://wa.me/919363503310?text=More%20Information%20about%20Traceurs%20Park"
+                        href="https://wa.me/919363503310?text=More%20Information%20about%20Traceurs%20Park%20%5Bwith%20spark%5D"
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -797,6 +798,16 @@ function App() {
                 </article>
               ))}
             </div>
+            <div className="services-enroll-wrap">
+              <a
+                className="cta-btn services-enroll-btn"
+                href="https://wa.me/919363503310?text=I%20want%20to%20enroll%20at%20Traceurs%20Park%20%5Bwith%20spark%5D"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Enroll Now
+              </a>
+            </div>
           </div>
         </section>
 
@@ -867,8 +878,8 @@ function App() {
                         </div>
                       </div>
                       <div className="trainer-body">
-                        <h3>{trainer.name}</h3>
-                        <p><b>{trainer.focus}</b></p>
+                        <h2>{trainer.name}</h2>
+                        <p className="trainer-focus">{trainer.focus}</p>
                         <p>{trainer.intro}</p>
                       </div>
                     </article>
@@ -1044,7 +1055,7 @@ function App() {
           </div>
         </section>
 
-        </>)}
+        </div>)}
 
         {currentPage === 'about' && <About />}
         {currentPage === 'achievements' && <Achievements />}
@@ -1089,7 +1100,7 @@ function App() {
                   {/* Mobile only: WhatsApp */}
                   <a
                     className="cta-btn hero-cta-mobile"
-                    href="https://wa.me/919363503310?text=More%20Information%20about%20Traceurs%20Park"
+                    href="https://wa.me/919363503310?text=More%20Information%20about%20Traceurs%20Park%20%5Bwith%20spark%5D"
                     target="_blank"
                     rel="noreferrer"
                   >

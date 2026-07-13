@@ -7,6 +7,9 @@ import trainerWomen from "../imgs/trainers/Women-trainer.jpeg";
 import trainerBody from "../imgs/trainers/Body Building Trainer.jpeg";
 import trainerAnimalFlow from "../imgs/trainers/Animal Flow Trainer.jpeg";
 import trainerNunchucks from "../imgs/trainers/Nunchucks-trainer.jpeg";
+import aboutUsBanner from "../imgs/about-us/AboutUsBanner.jpg.jpeg";
+import tpkLogo from "../imgs/about-us/tpk_logo.jpeg";
+import newEraLogo from "../imgs/about-us/new_era_logo.png";
 
 const trainers = [
   { name: "Mohamed Imran Shajahan", focus: "Founder & Master Coach", intro: "Chief Trainer: Advanced Parkour Training and Coaching", instagram: "https://www.instagram.com/imran_parkour" ,image: trainerChief },
@@ -28,6 +31,19 @@ const aboutStats = [
   { label: "Years Experience", target: 14, suffix: "+" },
   { label: "Safety Committed", target: 100, suffix: "%" }
 ];
+
+const founder = {
+  name: "Mohamed Imran Shajahan",
+  role: "Founder & Master Coach",
+  image: trainerChief,
+  bio: [
+    "Founder of Trichy Parkour (2012) | Founder & Head Coach - Traceurs Park | The Movement Academy Parkour Coach | Movement Educator | Martial Arts & Functional Fitness Trainer",
+    "Mohamed Imran Shajahan is a pioneering parkour coach and movement educator from Tiruchirappalli, Tamil Nadu. In 2012, he founded Trichy Parkour, becoming one of the early pioneers dedicated to introducing and developing parkour in the region. With over 14 years of coaching experience, he has played a key role in building a strong movement community and promoting safe, structured parkour training.",
+    "As the Founder & Head Coach of Traceurs Park - The Movement Academy, Imran has trained more than 4,000 students, helping children, youth, adults, athletes, and fitness enthusiasts develop strength, agility, confidence, discipline, and resilience through movement.",
+    "His coaching philosophy integrates parkour fundamentals with functional fitness, natural movement, bodyweight strength, mobility, and martial arts, enabling students to build complete physical capability and mental confidence.",
+    "Through workshops, demonstrations, school programs, and community initiatives, Imran continues to inspire people to embrace movement as a lifelong practice. His mission is to elevate the standard of parkour in India by creating a safe, inclusive, and professional environment where individuals can unlock their full potential."
+  ]
+};
 
 function getVisibleTeamCards() {
   if (window.innerWidth <= 740) {
@@ -167,6 +183,7 @@ export default function About() {
 
   return (
     <><section className="about-hero">
+      <img className="about-hero-image" src={aboutUsBanner} alt="Traceurs Park academy banner" />
       <div className="about-hero-placeholder"></div>
       <div className="about-hero-overlay">
         <h1>About Traceurs Park</h1>
@@ -175,14 +192,30 @@ export default function About() {
     </section>
 
     <div className="container">
+      <section className="about-founder fade-in-up" aria-label="Founder information">
+        <div className="about-founder-media">
+          <img src={founder.image} alt={`${founder.name} portrait`} />
+        </div>
+        <div className="about-founder-content">
+          <p className="about-founder-tag">Founder Spotlight</p>
+          <h2>{founder.name}</h2>
+          <h3>{founder.role}</h3>
+          {founder.bio.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      </section>
+
       {/* Timeline Section */}
       <section className="about-timeline">
         <div className="timeline-card timeline-2012 fade-in-up">
+          <img className="timeline-logo" src={tpkLogo} alt="TPK logo" />
           <div className="timeline-year">2012</div>
           <h3>The Beginning</h3>
           <p>Trichy Parkour founded with a vision to introduce movement to all ages</p>
         </div>
         <div className="timeline-card timeline-2026 fade-in-up" style={{ transitionDelay: '0.15s' }}>
+          <img className="timeline-logo" src={newEraLogo} alt="Traceurs Park new era logo" />
           <div className="timeline-year">2026</div>
           <h3>New Era</h3>
           <p>Traceurs Park Movement Academy launches with purpose-built facilities</p>
@@ -332,8 +365,8 @@ export default function About() {
                     </div>
                   </div>
                   <div className="trainer-body">
-                    <h3>{trainer.name}</h3>
-                    <p><b>{trainer.focus}</b></p>
+                    <h2>{trainer.name}</h2>
+                    <p className="trainer-focus">{trainer.focus}</p>
                     <p>{trainer.intro}</p>
                   </div>
                 </article>
