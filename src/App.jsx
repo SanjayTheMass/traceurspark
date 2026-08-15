@@ -671,7 +671,7 @@ function App() {
           <div className="container topbar-inner">
             <a className="brand" href="#home" onClick={(e) => { e.preventDefault(); setCurrentPage("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
               <img src={logo} alt="Traceurs Park logo" />
-              <span>Traceurs Park</span>
+              
             </a>
             <nav ref={navLinksRef} className="nav-links" aria-label="Main navigation">
               <a className={currentPage === "home" ? "is-active" : ""} href="#home" onClick={(e) => { e.preventDefault(); setCurrentPage("home"); }}>Home</a>
